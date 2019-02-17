@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Safood</string>
+    <string name="signIn_btn_text">Sign In</string>
+    <string name="signUp_btn_text">Sign Up</string>
+    <string name="GO_btn_text">GO</string>
+    <string name="usr_text">Username</string>
+    <string name="pwd_text">Password</string>
+</resources>
+
