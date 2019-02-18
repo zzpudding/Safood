@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-public class main extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +14,7 @@ public class main extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent loginIntent=new Intent(main.this,start.class);
+                Intent loginIntent=new Intent(MainActivity.this, StartActivity.class);
                 startActivity(loginIntent);
                 finish();
             }

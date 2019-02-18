@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signIn">
+    tools:context=".SignUpActivity">
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -70,25 +70,24 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:backgroundTint="@color/colorWhite"
-                android:hint="@string/usr_text"
-                android:textColor="@color/colorWhite" />
+                    android:id="@+id/etUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:backgroundTint="@color/colorWhite"
+                    android:hint="@string/usr_text"
+                    android:textColor="@color/colorWhite"/>
 
             <EditText
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:backgroundTint="@color/colorWhite"
-                android:hint="@string/pwd_text"
-                android:inputType="textPassword"
-                android:textColor="@color/colorWhite" />
+                    android:id="@+id/etPassword"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:backgroundTint="@color/colorWhite"
+                    android:hint="@string/pwd_text"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorWhite" android:layout_width="wrap_content"/>
 
         </LinearLayout>
 
@@ -101,16 +100,16 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/signIn_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/button_border"
-                android:text="@string/GO_btn_text"
-                android:textColor="@color/colorWhite" />
+                    android:id="@+id/signUp_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/button_border"
+                    android:text="@string/GO_btn_text"
+                    android:textColor="@color/colorWhite"/>
         </LinearLayout>
 
         <LinearLayout
