@@ -49,13 +49,6 @@
                     android:contentDescription="@null"
                     android:src="@drawable/defaultprofile" />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/floatingActionButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    app:srcCompat="@drawable/defaultprofile" />
             </LinearLayout>
 
             <LinearLayout
