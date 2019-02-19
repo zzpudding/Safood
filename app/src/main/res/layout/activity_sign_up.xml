@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,10 +19,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.5"
+            android:layout_weight="1.5"
             android:background="@color/colorTheme"
             android:orientation="vertical">
 
@@ -38,7 +38,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="6"
+                android:layout_weight="3"
                 android:background="@color/colorTheme"
                 android:orientation="horizontal">
 
@@ -48,6 +48,14 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@null"
                     android:src="@drawable/defaultprofile" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/defaultprofile" />
             </LinearLayout>
 
             <LinearLayout
@@ -58,14 +66,14 @@
                 android:orientation="horizontal">
             </LinearLayout>
 
-
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="2.5"
+            android:layout_weight="1.5"
             android:background="@color/colorTheme"
             android:orientation="vertical">
 
@@ -74,23 +82,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:ems="10"
                     android:backgroundTint="@color/colorWhite"
+                    android:ems="10"
                     android:hint="@string/usr_text"
                     android:textColor="@color/colorWhite"/>
 
             <EditText
-                    android:id="@+id/etPassword"
+                    android:id="@+id/etPassword1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:ems="10"
                     android:backgroundTint="@color/colorWhite"
+                    android:ems="10"
                     android:hint="@string/pwd_text"
                     android:inputType="textPassword"
-                    android:textColor="@color/colorWhite" android:layout_width="wrap_content"/>
+                    android:textColor="@color/colorWhite"/>
 
+            <EditText
+                    android:id="@+id/etPassword2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/colorWhite"
+                    android:ems="10"
+                    android:hint="@string/pwd_confirm_text"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorWhite"/>
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,25 +118,32 @@
             android:orientation="vertical">
 
             <Button
-                    android:id="@+id/signUp_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:background="@drawable/button_border"
-                    android:text="@string/GO_btn_text"
-                    android:textColor="@color/colorWhite"/>
+                android:id="@+id/signUpConfirm_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/button_border"
+                android:text="@string/Confirm_btn_text"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/signUpClear_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/button_border"
+                android:text="@string/Clear_btn_text"
+                android:textColor="@color/colorWhite" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            android:background="@color/colorTheme"
-            android:orientation="vertical">
-        </LinearLayout>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
