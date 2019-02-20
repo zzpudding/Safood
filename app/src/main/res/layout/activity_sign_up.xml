@@ -72,7 +72,7 @@
 
             <EditText
                     android:id="@+id/etUsername"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/colorWhite"
@@ -82,7 +82,7 @@
 
             <EditText
                     android:id="@+id/etPassword1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/colorWhite"
@@ -93,7 +93,7 @@
 
             <EditText
                     android:id="@+id/etPassword2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/colorWhite"
@@ -112,24 +112,20 @@
 
             <Button
                 android:id="@+id/signUpConfirm_btn"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
                 android:background="@drawable/button_border"
                 android:text="@string/Confirm_btn_text"
                 android:textColor="@color/colorWhite" />
 
             <Button
                 android:id="@+id/signUpClear_btn"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/button_border"
                 android:text="@string/Clear_btn_text"
                 android:textColor="@color/colorWhite" />

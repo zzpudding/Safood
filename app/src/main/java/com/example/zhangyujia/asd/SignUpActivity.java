@@ -67,7 +67,6 @@ public class SignUpActivity extends AppCompatActivity{
         signUpClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 username.setText("");
                 password1.setText("");
                 password2.setText("");
