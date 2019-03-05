@@ -1,5 +1,7 @@
 package com.example.zhangyujia.asd;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +44,9 @@ public class SignInActivity extends AppCompatActivity {
 
                             username.setText("");
                             password.setText("");
+
+                            Intent intent=new Intent(SignInActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(SignInActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }

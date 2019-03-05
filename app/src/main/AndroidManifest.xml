@@ -40,6 +40,10 @@
         </activity>
         <activity android:name=".ProfileActivity">
         </activity>
+        <activity android:name=".AddRecipeActivity">
+        </activity>
+        <activity android:name=".HomeActivity">
+        </activity>
     </application>
 
 </manifest>
