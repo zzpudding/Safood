@@ -8,6 +8,10 @@
     <string name="usr_text">Username</string>
     <string name="pwd_text">Password</string>
     <string name="pwd_confirm_text">Confirm Password</string>
+    <string name="cookbook_title">My cookbook</string>
+    <string name="add_recipe">Add new Recipe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 

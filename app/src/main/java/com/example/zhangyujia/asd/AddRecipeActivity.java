@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -46,12 +47,13 @@ public class AddRecipeActivity extends AppCompatActivity {
         String ingre1 = ingredient1.getText().toString();
         String ingre2 = ingredient2.getText().toString();
         String ingre3 = ingredient3.getText().toString();
+
         //String ingre4 = ingredient4.getText().toString();
 
         if (!TextUtils.isEmpty(name)) {
             String recipeId = databaseRecipes.push().getKey();
 
-            Recipe recipe = new Recipe(recipeId, name, ingre1, ingre2, ingre3);
+            Recipe recipe = new Recipe(recipeId, name, ingre1, ingre2, ingre3,R.drawable.default_recipe_pic);
 
             databaseRecipes.child(recipeId).setValue(recipe);
 
