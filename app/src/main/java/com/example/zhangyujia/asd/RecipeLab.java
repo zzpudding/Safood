@@ -33,12 +33,12 @@ public class RecipeLab {
     public List<Recipe> getRecipes() {
         return mRecipes;
     }
-//    public Recipe getRecipe(UUID id){
-//        for (Recipe recipe : mRecipes){
-//            if(recipe.getId ().equals(id)){
-//                return recipe;
-//            }
-//        }
-//        return null;
-//    }
+    public Recipe getRecipe(String id){
+        for (Recipe recipe : mRecipes){
+            if(recipe.getRecipeId ().equals(id)){
+                return recipe;
+            }
+        }
+        return null;
+    }
 }
