@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class RecipeActivity extends SingleFragmentActivity implements RecipeFragment.OnFragmentInteractionListener
 
@@ -30,4 +27,6 @@ public class RecipeActivity extends SingleFragmentActivity implements RecipeFrag
         intent.putExtra(EXTRA_RECIPE_ID,recipeId);
         return intent;
     }
+
+
 }

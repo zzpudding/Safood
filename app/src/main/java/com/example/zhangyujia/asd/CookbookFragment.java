@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -65,6 +68,7 @@ public class CookbookFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -85,6 +89,77 @@ public class CookbookFragment extends Fragment {
         mAdapter = new RecipeAdapter(recipes);
         mCookbookRecyclerView.setAdapter(mAdapter);
     }
+
+    private void showDialog(final Recipe mRecipe) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        final View dialogView = inflater.inflate(R.layout.update_delete_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextNewName = (EditText) dialogView.findViewById(R.id.editTextNewName);
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDelete);
+
+        dialogBuilder.setTitle("Editing recipe: " + mRecipe.getRecipeName());
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newName = editTextNewName.getText().toString().trim();
+
+                if (!TextUtils.isEmpty(newName)) {
+                    updateRecipe(mRecipe, newName);
+
+                    alertDialog.dismiss();
+                } else {
+                    editTextNewName.setError("Please enter a new name");
+                    return;
+                }
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteRecipe(mRecipe.getRecipeId());
+
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    private boolean updateRecipe(Recipe mRecipe, String newName) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("recipes").child(mRecipe.getRecipeId());
+
+        Recipe updatedRecipe = new Recipe(mRecipe.getRecipeId(), newName, mRecipe.getIngredient1(), mRecipe.getIngredient2(), mRecipe.getIngredient3(), R.drawable.default_recipe_pic);
+        databaseReference.setValue(updatedRecipe);
+
+        Toast.makeText(getActivity(), "Recipe Updated Successfully", Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+
+    private void deleteRecipe(String recipeId) {
+        DatabaseReference drRecipe = FirebaseDatabase.getInstance().getReference("recipes").child(recipeId);
+
+        drRecipe.removeValue();
+
+        Toast.makeText(getActivity(), "Recipe Deleted Successfully", Toast.LENGTH_LONG).show();
+    }
+
+
+
+
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -134,6 +209,13 @@ public class CookbookFragment extends Fragment {
             mNameTextView = (TextView) itemView.findViewById(R.id.recipe_name);
             mImageView = (ImageView) itemView.findViewById(R.id.recipe_image);
 
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    showDialog(mRecipe);
+                    return false;
+                }
+            });
         }
 
         @Override
