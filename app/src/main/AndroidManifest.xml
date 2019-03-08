@@ -45,6 +45,7 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".AddRecipeActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".initalSettingActivity"/>
     </application>
 
 </manifest>

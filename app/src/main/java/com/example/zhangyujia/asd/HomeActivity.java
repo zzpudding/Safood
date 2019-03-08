@@ -12,6 +12,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Button addButton;
     private Button cbButton;
+    private Button alButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,8 @@ public class HomeActivity extends AppCompatActivity {
 
         addButton = findViewById(R.id.add_recipe_button);
         cbButton  = findViewById(R.id.cookbook_button);
+        alButton =  findViewById(R.id.allergy_button);
+
         cbButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +33,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(HomeActivity.this, AddRecipeActivity.class);
+                startActivity(intent);
+            }
+        });
+        alButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this, initalSettingActivity.class);
                 startActivity(intent);
             }
         });
