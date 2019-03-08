@@ -82,7 +82,7 @@ public class RecipeFragment extends Fragment {
         mRecipeImage= (ImageView) view.findViewById(R.id.recipe_image);
         mRecipeImage.setImageResource(mRecipe.getImageId());
         mRecipeDetail=(TextView) view.findViewById(R.id.recipe_detail);
-        mRecipeDetail.setText(mRecipe.getIngredient1()+mRecipe.getIngredient2()+mRecipe.getIngredient2());
+        mRecipeDetail.setText(mRecipe.getIngredient1()+mRecipe.getIngredient2()+mRecipe.getIngredient2()+mRecipe.getIngredient3());
         return view;
     }
 

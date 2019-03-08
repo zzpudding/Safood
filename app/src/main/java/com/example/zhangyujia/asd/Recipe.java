@@ -19,7 +19,7 @@ public class Recipe {
         this.imageId = imageId;
         //this.ingredient4 = ingredient4;
     }
-
+    public Recipe(){}
     public String getRecipeId() {
         return recipeId;
     }
