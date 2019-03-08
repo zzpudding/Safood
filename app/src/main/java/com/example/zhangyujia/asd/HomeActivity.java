@@ -1,11 +1,9 @@
 package com.example.zhangyujia.asd;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
@@ -39,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         alButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this, initalSettingActivity.class);
+                Intent intent=new Intent(HomeActivity.this, InitalSettingActivity.class);
                 startActivity(intent);
             }
         });
