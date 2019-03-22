@@ -8,6 +8,10 @@
     <color name="colorTextBg">#FFFAEC</color>
     <color name="colorBottomBg">#EBEAEA</color>
     <color name="colorTextContent">#7F7F7F</color>
+    
+    <color name="green1">#7B9BA6</color>
+    <color name="green2">#8DA592</color>
+    <color name="green3">#CBD9D6</color>
 
 
 </resources>

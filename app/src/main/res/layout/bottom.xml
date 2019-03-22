@@ -41,7 +41,6 @@
         android:padding="2dp"
         android:scaleType="fitCenter"
         android:background="@null"
-
         android:src="@drawable/cart_icon">
 
     </ImageButton>
