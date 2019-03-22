@@ -1,4 +1,5 @@
 <resources>
+    <string name="Home">Home</string>
     <string name="app_name">Safood</string>
     <string name="signIn_btn_text">Sign In</string>
     <string name="signUp_btn_text">Sign Up</string>
