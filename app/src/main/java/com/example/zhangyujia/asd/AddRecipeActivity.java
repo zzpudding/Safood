@@ -1,7 +1,7 @@
 package com.example.zhangyujia.asd;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +16,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     private EditText ingredient1;
     private EditText ingredient2;
     private EditText ingredient3;
-    private EditText ingredient4;
+    //private EditText ingredient4;
     private Button addRecipe;
     DatabaseReference databaseRecipes;
 
