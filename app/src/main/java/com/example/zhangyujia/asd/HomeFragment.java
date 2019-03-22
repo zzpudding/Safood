@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,8 +76,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_home,container,false);
 
-        addButton =(Button)view.findViewById(R.id.add_recipe_button);
-        cbButton  = (Button)view.findViewById(R.id.cookbook_button);
+        addButton =(Button)view.findViewById(R.id.add_recipe_btn);
+        cbButton  = (Button)view.findViewById(R.id.cookbook_btn);
         Log.d(TAG,"Button wired");
         addButton.setOnClickListener(this);
 
@@ -116,7 +113,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.add_recipe_button:
+            case R.id.add_recipe_btn:
                 Log.d(TAG,"clicked add");
                 Intent intent1=new Intent(getActivity(), AddRecipeActivity.class);
                 startActivity(intent1);
@@ -125,7 +122,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
 //                    onButtonClickListener1.onButtonClick1();
 //                }
                 break;
-            case R.id.cookbook_button:
+            case R.id.cookbook_btn:
                 Log.d(TAG,"clicked cookbook");
                 Intent intent2=new Intent(getActivity(), CookbookActivity.class);
                 startActivity(intent2);

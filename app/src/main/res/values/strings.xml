@@ -12,13 +12,16 @@
 
     <string name="pwd_confirm_text">Confirm Password</string>
 
-    <string name="cookbook_title">My cookbook</string>
     <string name="add_recipe">Add new Recipe</string>
     <string name="userName">Wang Xiao Er</string>
 
     <string name="gen_sl">Generate a \nshopping list</string>
     <string name="view_sl">View shopping list</string>
     <string name="find_st">Find a store</string>
+
+    <string name="search">Search recipe</string>
+    <string name="cb">My cookbook</string>
+    <string name="addR">Add a new recipe</string>
 
     <string name="allergySetting">Allergy Setting</string>
 

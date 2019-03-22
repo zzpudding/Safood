@@ -16,12 +16,12 @@
         android:text="@string/add_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" tools:layout_editor_absoluteY="169dp"
-        tools:layout_editor_absoluteX="65dp" android:id="@+id/add_recipe_button"/>
+        tools:layout_editor_absoluteX="65dp" android:id="@+id/add_recipe_btn"/>
     <Button
-        android:text="@string/cookbook_title"
+        android:text="@string/cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/cookbook_button"/>
+        android:id="@+id/cookbook_btn"/>
 
     <Button
         android:text="@string/Confirm_btn_text"
