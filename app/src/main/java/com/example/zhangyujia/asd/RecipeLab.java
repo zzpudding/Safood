@@ -2,6 +2,7 @@ package com.example.zhangyujia.asd;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,17 +17,23 @@ public class RecipeLab {
     private static RecipeLab sRecipeLab;
     private List<Recipe> mRecipes;
     DatabaseReference databaseRecipes;
+    private static final String TAG="RecipeLab";
 
 
     public static RecipeLab get(Context context) {
         if (sRecipeLab == null) {
             sRecipeLab = new RecipeLab(context);
         }
+//        while(sRecipeLab.mRecipes.isEmpty()){
+//
+//        }
+        Log.d(TAG,"get the recipelab");
         return sRecipeLab;
     }
 
     private RecipeLab(Context context) {
         mRecipes = new ArrayList<>();
+
         databaseRecipes = FirebaseDatabase.getInstance().getReference("recipes");
 //        for (int i = 0; i < 2; i++) {
 //            Recipe MapoTofu = new Recipe("1","Mapo Tofu","Tofu","Pork","",R.drawable.mapotofu_pic);
@@ -45,7 +52,9 @@ public class RecipeLab {
                 for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
                     Recipe recipe=recipeSnapshot.getValue(Recipe.class);
                     mRecipes.add(recipe);
+
                 }
+            Log.d(TAG,"getmRecipes");
             }
 
             @Override
@@ -56,6 +65,7 @@ public class RecipeLab {
     }
 
     public List<Recipe> getRecipes() {
+        Log.d(TAG,"getRecipes");
         return mRecipes;
     }
     public Recipe getRecipe(String id){
@@ -64,6 +74,7 @@ public class RecipeLab {
                 return recipe;
             }
         }
+//        Log.d(TAG,"getRecipes");
         return null;
     }
 }
