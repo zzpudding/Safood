@@ -1,14 +1,17 @@
 package com.example.zhangyujia.asd;
 
 import android.app.Activity;
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.Toast;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.content.Intent;
 
 public class InitalSettingActivity extends Activity {
+
+    Button allergy_btn;
 
     ImageButton milk_btn;
     ImageButton eggs_btn;
@@ -35,16 +38,26 @@ public class InitalSettingActivity extends Activity {
         addListenerOnButton();
     }
 
+    public void finishIniActivity(View view){
+        Intent intent = new Intent(this, TagActivity.class);
+        startActivity(intent);
+        Toast.makeText(InitalSettingActivity.this,
+                "Allergy setting is saved!", Toast.LENGTH_SHORT).show();
+        //to write: save allergy data to firebase
+    }
+
     public void addListenerOnButton() {
 
-        milk_btn = (ImageButton) findViewById(R.id.allergy1);
-        eggs_btn = (ImageButton) findViewById(R.id.allergy2);
-        fish_btn = (ImageButton) findViewById(R.id.allergy3);
-        shell_btn = (ImageButton) findViewById(R.id.allergy4);
-        treenuts_btn = (ImageButton) findViewById(R.id.allergy5);
-        peanuts_btn = (ImageButton) findViewById(R.id.allergy6);
-        wheat_btn = (ImageButton) findViewById(R.id.allergy7);
-        soya_btn = (ImageButton) findViewById(R.id.allergy8);
+        milk_btn =  findViewById(R.id.allergy1);
+        eggs_btn =  findViewById(R.id.allergy2);
+        fish_btn =  findViewById(R.id.allergy3);
+        shell_btn = findViewById(R.id.allergy4);
+        treenuts_btn = findViewById(R.id.allergy5);
+        peanuts_btn =  findViewById(R.id.allergy6);
+        wheat_btn = findViewById(R.id.allergy7);
+        soya_btn =  findViewById(R.id.allergy8);
+
+        allergy_btn = findViewById(R.id.allergySet_btn);
 
 
         milk_btn.setOnClickListener(new OnClickListener() {

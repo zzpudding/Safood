@@ -44,7 +44,8 @@ public class SignInActivity extends AppCompatActivity {
                             username.setText("");
                             password.setText("");
 
-                            Intent intent=new Intent(SignInActivity.this, TagActivity.class);
+//                           Intent intent=new Intent(SignInActivity.this, TagActivity.class);
+                            Intent intent=new Intent(SignInActivity.this, InitalSettingActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(SignInActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
