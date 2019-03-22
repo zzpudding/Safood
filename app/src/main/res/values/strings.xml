@@ -12,6 +12,7 @@
     <string name="cookbook_title">My cookbook</string>
     <string name="add_recipe">Add new Recipe</string>
     <string name="userName">Wang Xiao Er</string>
+    <string name="gen_sl">Generate a shopping list</string>
     <string name="allergySetting">Allergy Setting</string>
     <string name="allergyInfo">Select your allergen here.\nNote: You can always change it in your account setting. :) </string>
     <!-- TODO: Remove or change this placeholder text -->
