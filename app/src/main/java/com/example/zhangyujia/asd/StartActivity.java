@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class StartActivity extends AppCompatActivity {
 
 
@@ -14,9 +16,18 @@ public class StartActivity extends AppCompatActivity {
 
     public static final String TAG="StartActivity";
 
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth=FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser()!=null){
+            Intent homeIntent= new Intent(StartActivity.this,TagActivity.class);
+            startActivity(homeIntent);
+            finish();
+        }
+
+
         setContentView(R.layout.activity_start);
         Button signin = (Button) findViewById(R.id.signIn_btn);
         Button signup = (Button) findViewById(R.id.signUp_btn);

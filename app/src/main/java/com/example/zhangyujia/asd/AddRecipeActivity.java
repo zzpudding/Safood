@@ -1,5 +1,8 @@
 package com.example.zhangyujia.asd;
 
+import android.content.ContentResolver;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -52,8 +55,9 @@ public class AddRecipeActivity extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(name)) {
             String recipeId = databaseRecipes.push().getKey();
+            String imageUri=imageTranslateUri(R.drawable.default_recipe_pic);
 
-            Recipe recipe = new Recipe(recipeId, name, ingre1, ingre2, ingre3,R.drawable.default_recipe_pic);
+            Recipe recipe = new Recipe(recipeId, name, ingre1, ingre2, ingre3, imageUri);
 
             databaseRecipes.child(recipeId).setValue(recipe);
 
@@ -61,5 +65,17 @@ public class AddRecipeActivity extends AppCompatActivity {
         } else {
             Toast.makeText(AddRecipeActivity.this, "Please enter the recipe name.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public String imageTranslateUri(int resId) {
+
+        Resources r = getResources();
+        Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+                + r.getResourcePackageName(resId) + "/"
+                + r.getResourceTypeName(resId) + "/"
+                + r.getResourceEntryName(resId));
+
+        return uri.toString();
+
     }
 }

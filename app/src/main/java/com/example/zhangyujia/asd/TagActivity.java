@@ -257,5 +257,10 @@ public class TagActivity extends AppCompatActivity implements HomeFragment.OnFra
 //        transaction.addToBackStack(null);
 //        transaction.commit();
 //    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG,"onDestroy0");
+    }
 
 }

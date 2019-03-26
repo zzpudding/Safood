@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
     private String mParam2;
     private Button addButton;
     private Button cbButton;
+    private Button searchButton;
 
     private OnFragmentInteractionListener mListener;
 //    private OnButtonClickListener1 onButtonClickListener1 ;
@@ -78,10 +79,15 @@ public class HomeFragment extends Fragment implements OnClickListener {
 
         addButton =(Button)view.findViewById(R.id.add_recipe_btn);
         cbButton  = (Button)view.findViewById(R.id.cookbook_btn);
+        searchButton=(Button)view.findViewById(R.id.search_btn);
+
         Log.d(TAG,"Button wired");
         addButton.setOnClickListener(this);
+        searchButton.setOnClickListener(this);
+
 
         cbButton.setOnClickListener(this);
+
 //            @Override
 //            public void onClick(View view) {
 //                Log.d(TAG,"clicked add");
@@ -129,6 +135,15 @@ public class HomeFragment extends Fragment implements OnClickListener {
 //                if(onButtonClickListener2 != null)
 //                {
 //                    onButtonClickListener2.onButtonClick2();
+//                }
+                break;
+            case R.id.search_btn:
+                Log.d(TAG,"clicked search");
+                Intent intent3=new Intent(getActivity(), SearchRecipeActivity.class);
+                startActivity(intent3);
+//                if(onButtonClickListener1 != null)
+//                {
+//                    onButtonClickListener1.onButtonClick1();
 //                }
                 break;
                 default:break;

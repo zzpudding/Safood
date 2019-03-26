@@ -5,54 +5,25 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="test"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FindStoreActivity"></activity>
+        <activity android:name=".SearchRecipeActivity"></activity>
+        <activity android:name=".FindStoreActivity" />
         <activity android:name=".ViewShopListActivity" />
         <activity android:name=".GenerateShopListActivity" />
         <activity
             android:name=".CookbookActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".RecipeActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".RecipeActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".StartActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-        </activity>
-        <activity
-            android:name=".SignUpActivity"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-        </activity>
-        <activity
-            android:name=".SignInActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".ProfileActivity" />
-        <activity
-            android:name=".AddRecipeActivity"
-            android:launchMode="singleTop" />
-        <activity
-            android:name=".TagActivity"
-            android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,8 +31,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InitalSettingActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".SignUpActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".SignInActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".AddRecipeActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".TagActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".InitialSettingActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

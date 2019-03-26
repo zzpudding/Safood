@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +32,7 @@ public class RecipeFragment extends Fragment {
     private String mRecipeId;
     private String mRecipeName;
     private String mRecipeIngredient1;
+    private String mRecipeImageId;
     private Recipe mRecipe;
     private ImageView mRecipeImage;
     private TextView mRecipeDetail;
@@ -57,13 +60,13 @@ public class RecipeFragment extends Fragment {
      * @return A new instance of fragment RecipeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecipeFragment newInstance(String recipeId,String recipeName,String recipeIngredient1,int recipeImage) {
+    public static RecipeFragment newInstance(String recipeId,String recipeName,String recipeIngredient1,String recipeImage) {
         RecipeFragment fragment = new RecipeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_RECIPE_ID, recipeId);
         args.putString(ARG_RECIPE_NAME, recipeName);
         args.putString(ARG_RECIPE_INGREDIENT1, recipeIngredient1);
-        args.putInt(ARG_RECIPE_IMAGE, recipeImage);
+        args.putString(ARG_RECIPE_IMAGE, recipeImage);
         fragment.setArguments(args);
         return fragment;
     }
@@ -75,7 +78,7 @@ public class RecipeFragment extends Fragment {
             mRecipeId = getArguments().getString(ARG_RECIPE_ID);
             mRecipeName = getArguments().getString(ARG_RECIPE_NAME);
             mRecipeIngredient1=getArguments().getString(ARG_RECIPE_INGREDIENT1);
-
+            mRecipeImageId=getArguments().getString(ARG_RECIPE_IMAGE);
 
 
         }
@@ -87,7 +90,9 @@ public class RecipeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
         mRecipeImage= (ImageView) view.findViewById(R.id.recipe_image);
-        mRecipeImage.setImageResource(getArguments().getInt(ARG_RECIPE_IMAGE));
+        Picasso.with(getContext()).load(mRecipeImageId).placeholder(R.drawable.default_recipe_pic).fit().into(mRecipeImage);
+
+//        mRecipeImage.setImageResource(getArguments().getInt(ARG_RECIPE_IMAGE));
         mRecipeDetail=(TextView) view.findViewById(R.id.recipe_detail);
         mRecipeDetail.setText(mRecipeId +mRecipeName+mRecipeIngredient1);
         return view;

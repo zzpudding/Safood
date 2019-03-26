@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,29 +98,39 @@ public class CookbookFragment extends Fragment {
 
         mCookbookRecyclerView = (RecyclerView) view.findViewById(R.id.cookbook_recycler_view);
         mCookbookRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        updateUI();
+//        updateUI();
 
-//        list=new ArrayList<Recipe>();
-//        reference= FirebaseDatabase.getInstance().getReference().child("recipes");
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                list.clear();
-//                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
-//                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
-//                    list.add(recipe);
-//
-//                }
-//                mAdapter = new RecipeAdapter(list);
-//                mCookbookRecyclerView.setAdapter(mAdapter);
-//                Log.d(TAG,"dataRetrieved");
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        list=new ArrayList<Recipe>();
+//        for (int i = 0; i < 2; i++) {
+//            Recipe MapoTofu = new Recipe("1","Mapo Tofu","Tofu","Pork","",R.drawable.mapotofu_pic);
+//            list.add(MapoTofu);
+//            Recipe BroccoliShrimp = new Recipe("2","Broccoli Shrimp","Broccoli","Shrimp","",R.drawable.broccolishrimp_pic);
+//            list.add(BroccoliShrimp);
+//            Recipe KungpaoChicken = new Recipe("3","Kung Pao Chicken","Cucumber","Carrot","",R.drawable.kungpaochicken_pic);
+//            list.add(KungpaoChicken);
+//            Recipe CurryRice = new Recipe("4","Curry Rice","Chicken","Curry","Potato",R.drawable.curryrice_pic);
+//            list.add(CurryRice);
+//        }
+        reference= FirebaseDatabase.getInstance().getReference().child("recipes");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
+                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
+                    list.add(recipe);
+
+                }
+                mAdapter.notifyDataSetChanged();
+
+                Log.d(TAG,"dataRetrieved");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 //        Log.d(TAG,"updateUI");
@@ -131,6 +142,8 @@ public class CookbookFragment extends Fragment {
 //        }
 //        mAdapter = new RecipeAdapter(recipes);
 //        mCookbookRecyclerView.setAdapter(mAdapter);
+        mAdapter = new RecipeAdapter(list);
+        mCookbookRecyclerView.setAdapter(mAdapter);
         return view;
     }
 
@@ -142,35 +155,36 @@ public class CookbookFragment extends Fragment {
 //        }
 ////        return null;
 //    }
-    private void updateUI(){
-        Log.d(TAG,"updateUI");
-        list=new ArrayList<Recipe>();
-        reference= FirebaseDatabase.getInstance().getReference().child("recipes");
-        reference.addValueEventListener(new ValueEventListener() {
-             @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    list.clear();
-                    for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
-                        Recipe recipe=recipeSnapshot.getValue(Recipe.class);
-                        list.add(recipe);
-
-                    }
-                    mAdapter = new RecipeAdapter(list);
-                    mCookbookRecyclerView.setAdapter(mAdapter);
-                    Log.d(TAG,"dataRetrieved");
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+//    private void updateUI(){
+//        Log.d(TAG,"updateUI");
+//        list=new ArrayList<Recipe>();
+//        reference= FirebaseDatabase.getInstance().getReference().child("recipes");
+//        reference.addValueEventListener(new ValueEventListener() {
+//             @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    list.clear();
+//                    for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
+//                        Recipe recipe=recipeSnapshot.getValue(Recipe.class);
+//
+//                        list.add(recipe);
+//
+//                    }
+//                    mAdapter = new RecipeAdapter(list);
+//                    mCookbookRecyclerView.setAdapter(mAdapter);
+//                    Log.d(TAG,"dataRetrieved");
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
 //        RecipeLab recipeLab = RecipeLab.get(getActivity());
 //        List<Recipe> recipes=recipeLab.getRecipes();
 //        Log.d(TAG,"recipe"+ recipes.isEmpty());
 ////        mAdapter = new RecipeAdapter(recipes);
 //        mCookbookRecyclerView.setAdapter(mAdapter);
-    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -237,14 +251,17 @@ public class CookbookFragment extends Fragment {
         public void bind(Recipe recipe){
             mRecipe = recipe;
             mNameTextView.setText(mRecipe.getRecipeName());
-            mImageView.setImageResource(mRecipe.getImageId());
+            Picasso.with(getContext()).load(recipe.getImageId()).placeholder(R.drawable.default_recipe_pic).fit().into(mImageView);
+//            mImageView.setImageResource(recipe.getImageId());
+
         }
 
     }
     private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder>{
         private List<Recipe> mRecipes;
 
-        public RecipeAdapter(List<Recipe> recipes){
+        public RecipeAdapter(List<Recipe
+                > recipes){
             mRecipes=recipes;
 
         }

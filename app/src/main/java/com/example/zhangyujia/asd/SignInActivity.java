@@ -13,12 +13,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class SignInActivity extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
     private Button signin;
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class SignInActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString()).
                         addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -45,7 +48,7 @@ public class SignInActivity extends AppCompatActivity {
                             password.setText("");
 
 //                           Intent intent=new Intent(SignInActivity.this, TagActivity.class);
-                            Intent intent=new Intent(SignInActivity.this, InitalSettingActivity.class);
+                            Intent intent=new Intent(SignInActivity.this, InitialSettingActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(SignInActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();

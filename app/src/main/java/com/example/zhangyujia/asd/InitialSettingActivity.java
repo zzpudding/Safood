@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.content.Intent;
 
-public class InitalSettingActivity extends Activity {
+public class InitialSettingActivity extends Activity {
 
     Button allergy_btn;
 
@@ -41,7 +41,7 @@ public class InitalSettingActivity extends Activity {
     public void finishIniActivity(View view){
         Intent intent = new Intent(this, TagActivity.class);
         startActivity(intent);
-        Toast.makeText(InitalSettingActivity.this,
+        Toast.makeText(InitialSettingActivity.this,
                 "Allergy setting is saved!", Toast.LENGTH_SHORT).show();
         //to write: save allergy data to firebase
     }
@@ -65,7 +65,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(milk_isPressed){
                     milk_btn.setBackgroundResource(R.drawable.nomilk);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Milk is banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     milk_btn.setBackgroundResource(R.drawable.milk);
@@ -79,7 +79,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(fish_isPressed){
                     fish_btn.setBackgroundResource(R.drawable.nofish);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Fish is banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     fish_btn.setBackgroundResource(R.drawable.fish);
@@ -94,7 +94,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(eggs_isPressed){
                     eggs_btn.setBackgroundResource(R.drawable.noeggs);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Eggs are banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     eggs_btn.setBackgroundResource(R.drawable.eggs);
@@ -108,7 +108,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(peanuts_isPressed){
                     peanuts_btn.setBackgroundResource(R.drawable.nopeanuts);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Peanuts are banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     peanuts_btn.setBackgroundResource(R.drawable.peanuts);
@@ -122,7 +122,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(soya_isPressed){
                     soya_btn.setBackgroundResource(R.drawable.nosoya);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Soya is banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     soya_btn.setBackgroundResource(R.drawable.soya);
@@ -136,7 +136,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(shell_isPressed){
                     shell_btn.setBackgroundResource(R.drawable.noshell);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Crustacean shellfish is banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     shell_btn.setBackgroundResource(R.drawable.shell);
@@ -150,7 +150,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(treenuts_isPressed){
                     treenuts_btn.setBackgroundResource(R.drawable.notreenuts);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Tree nuts are banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     treenuts_btn.setBackgroundResource(R.drawable.treenuts);
@@ -164,7 +164,7 @@ public class InitalSettingActivity extends Activity {
             public void onClick(View v) {
                 if(wheat_isPressed){
                     wheat_btn.setBackgroundResource(R.drawable.nowheat);
-                    Toast.makeText(InitalSettingActivity.this,
+                    Toast.makeText(InitialSettingActivity.this,
                             "Wheat is banned!", Toast.LENGTH_SHORT).show();
                 }else{
                     wheat_btn.setBackgroundResource(R.drawable.wheat);
