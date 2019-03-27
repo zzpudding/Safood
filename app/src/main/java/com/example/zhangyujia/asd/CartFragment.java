@@ -3,16 +3,14 @@ package com.example.zhangyujia.asd;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import android.view.View.OnClickListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,16 +88,16 @@ public class CartFragment extends Fragment implements OnClickListener {
         Log.d(TAG,"wat");
         switch (view.getId()){
             case R.id.generate_list:
-                Intent intent1= new Intent(getActivity(),GenerateShopListActivity.class);
+                Intent intent1 = new Intent(getActivity(), GenerateShopListActivity.class);
                 startActivity(intent1);
                 Log.d(TAG,"clicked 1");
                 break;
             case R.id.my_list:
-                Intent intent2= new Intent(getActivity(),ViewShopListActivity.class);
+                Intent intent2 = new Intent(getActivity(), ViewShopListActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.find_store:
-                Intent intent3= new Intent(getActivity(),FindStoreActivity.class);
+                Intent intent3 = new Intent(getActivity(), MapsActivity.class);
                 startActivity(intent3);
                 break;
             default:break;
