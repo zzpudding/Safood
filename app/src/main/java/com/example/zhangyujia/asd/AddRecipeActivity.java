@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -55,7 +54,7 @@ public class AddRecipeActivity extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(name)) {
             String recipeId = databaseRecipes.push().getKey();
-            String imageUri=imageTranslateUri(R.drawable.default_recipe_pic);
+            String imageUri = imageTranslateUri(R.drawable.default_recipe_pic);
 
             Recipe recipe = new Recipe(recipeId, name, ingre1, ingre2, ingre3, imageUri);
 
