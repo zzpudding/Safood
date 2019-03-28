@@ -1,7 +1,5 @@
 package com.example.zhangyujia.asd;
 
-import android.net.Uri;
-
 public class Recipe {
     private String recipeId;
     private String recipeName;
@@ -12,7 +10,7 @@ public class Recipe {
     //private String ingredient4;
 
 
-    public Recipe(String recipeId, String recipeName, String ingredient1, String ingredient2, String ingredient3,String imageId) {
+    public Recipe(String recipeId, String recipeName, String ingredient1, String ingredient2, String ingredient3, String imageId) {
         this.recipeId = recipeId;
         this.recipeName = recipeName;
         this.ingredient1 = ingredient1;
@@ -42,7 +40,9 @@ public class Recipe {
         return ingredient3;
     }
 
-    public String getImageId(){return imageId;}
+    public String getImageId() {
+        return imageId;
+    }
 
 //    public String getIngredient4() {
 //        return ingredient4;

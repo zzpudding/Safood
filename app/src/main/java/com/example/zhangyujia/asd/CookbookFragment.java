@@ -1,25 +1,23 @@
 package com.example.zhangyujia.asd;
 
+import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import android.widget.*;
+import com.google.firebase.database.*;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -191,6 +189,8 @@ public class CookbookFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+
+
     }
 
     @Override
@@ -234,12 +234,95 @@ public class CookbookFragment extends Fragment {
 //        final String recipeName=mRecipe.getRecipeName();
 //        final String ingredient1=mRecipe.getIngredient1();
 
+        private void showDialog(final Recipe mRecipe) {
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+
+            LayoutInflater inflater = getLayoutInflater();
+
+            final View dialogView = inflater.inflate(R.layout.update_delete_dialog, null);
+            dialogBuilder.setView(dialogView);
+
+            final EditText editTextNewName = (EditText) dialogView.findViewById(R.id.editTextNewName);
+            final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
+            final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDelete);
+
+            dialogBuilder.setTitle("Editing recipe: " + mRecipe.getRecipeName());
+
+            final AlertDialog alertDialog = dialogBuilder.create();
+            alertDialog.show();
+
+            buttonUpdate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String newName = editTextNewName.getText().toString().trim();
+
+                    if (!TextUtils.isEmpty(newName)) {
+                        updateRecipe(mRecipe, newName);
+
+                        alertDialog.dismiss();
+                    } else {
+                        editTextNewName.setError("Please enter a new name");
+                        return;
+                    }
+                }
+            });
+
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    deleteRecipe(mRecipe.getRecipeId());
+
+                    alertDialog.dismiss();
+                }
+            });
+        }
+
+        public String imageTranslateUri(int resId) {
+
+            Resources r = getResources();
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+                    + r.getResourcePackageName(resId) + "/"
+                    + r.getResourceTypeName(resId) + "/"
+                    + r.getResourceEntryName(resId));
+
+            return uri.toString();
+
+        }
+
+        private boolean updateRecipe(Recipe mRecipe, String newName) {
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("recipes").child(mRecipe.getRecipeId());
+
+            Recipe updatedRecipe = new Recipe(mRecipe.getRecipeId(), newName, mRecipe.getIngredient1(), mRecipe.getIngredient2(), mRecipe.getIngredient3(), imageTranslateUri(R.drawable.default_recipe_pic));
+            databaseReference.setValue(updatedRecipe);
+
+            Toast.makeText(getActivity(), "Recipe Updated Successfully", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+
+        private void deleteRecipe(String recipeId) {
+            DatabaseReference drRecipe = FirebaseDatabase.getInstance().getReference("recipes").child(recipeId);
+
+            drRecipe.removeValue();
+
+            Toast.makeText(getActivity(), "Recipe Deleted Successfully", Toast.LENGTH_LONG).show();
+        }
+
         public RecipeHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.list_item_recipe,parent,false));
             itemView.setOnClickListener(this);
             mNameTextView = (TextView) itemView.findViewById(R.id.recipe_name);
             mImageView = (ImageView) itemView.findViewById(R.id.recipe_image);
 
+
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    showDialog(mRecipe);
+                    return false;
+                }
+            });
         }
 
         @Override
