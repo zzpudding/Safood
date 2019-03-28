@@ -46,6 +46,7 @@ public class TagActivity extends AppCompatActivity implements HomeFragment.OnFra
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.tag_activity);
 
+
         mTabHome = findViewById(R.id.id_home);
         mTabCart = findViewById(R.id.id_cart);
         mTabProfile = findViewById(R.id.id_profile);

@@ -20,15 +20,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.litepal.LitePal;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SearchRecipeActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG="SearchActivity";
     private EditText mSearchArea;
     private RecyclerView mSearchResults;
     private ImageButton mSearchBtn;
@@ -36,6 +39,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
     DatabaseReference mReference;
     public ArrayList<Recipe>  list;
 
+    private List<Allergy> mAllergens;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,17 +50,18 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
         mSearchResults.setLayoutManager(new LinearLayoutManager(SearchRecipeActivity.this));
         mSearchBtn.setOnClickListener(this);
 
+        mAllergens= LitePal.select("allergyTypeName","allergy_1","allergy_2").where("isChecked = ?","1").find(Allergy.class);
+
         list=new ArrayList<Recipe>();
         mAdapter = new SearchRecipeActivity.RecipeAdapter(list);
         mSearchResults.setAdapter(mAdapter);
-
 
     }
     @Override
     public void onClick(View view){
         if(!mSearchArea.getText().toString().isEmpty()){
-        String searchText=mSearchArea.getText().toString();
-        RecipeSearch(searchText);}
+            String searchText=mSearchArea.getText().toString().toLowerCase();
+            RecipeSearch(searchText);}
         else{
             Toast.makeText(this,"Please enter a text",Toast.LENGTH_LONG).show();
         }
@@ -64,30 +69,48 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
     }
 
 
-    protected void RecipeSearch(String searchText){
-
+    protected void RecipeSearch(final String searchText){
         list.clear();
 
         mReference= FirebaseDatabase.getInstance().getReference().child("recipes");
-        Query query1 = mReference.orderByChild("recipeName").startAt(searchText).endAt(searchText+"\uf8ff");
-        Query query2 = mReference.orderByChild("ingredient1").startAt(searchText).endAt(searchText+"\uf8ff");
-        Query query3 = mReference.orderByChild("ingredient2").startAt(searchText).endAt(searchText+"\uf8ff");
-        Query query4 = mReference.orderByChild("ingredient3").startAt(searchText).endAt(searchText+"\uf8ff");
+//        Query query1 = mReference.orderByChild("recipeName").startAt(searchText).endAt(searchText+"\uf8ff");
+//        Query query2 = mReference.orderByChild("ingredient1").startAt(searchText).endAt(searchText+"\uf8ff");
+//        Query query3 = mReference.orderByChild("ingredient2").startAt(searchText).endAt(searchText+"\uf8ff");
+//        Query query4 = mReference.orderByChild("ingredient3").startAt(searchText).endAt(searchText+"\uf8ff");
 
 
 
-        query1.addValueEventListener(new ValueEventListener() {
+        mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                list.clear();
+                if(!dataSnapshot.exists()){
+                    return;
+                }
                 for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
                     Recipe recipe=recipeSnapshot.getValue(Recipe.class);
-                    if(recipe.getIngredient1().contains("nuts")||recipe.getIngredient2().contains("nuts")||recipe.getIngredient3().contains("nuts")){
+                    int toAdd= 1;
 
-                        continue;
+                    for(int i = 0; i<mAllergens.size(); i++){
+                        Log.d(TAG,"sd");
+                        String mKey=mAllergens.get(i).getAllergyTypeName().toLowerCase()+mAllergens.get(i).getAllergy_1().toLowerCase()+mAllergens.get(i).getAllergy_2().toLowerCase();
+                        if(mKey.contains(recipe.getIngredient1())||mKey.contains(recipe.getIngredient2())||mKey.contains(recipe.getIngredient3())){
+                            toAdd=0;
+                            break;
+                        }
                     }
 
-                    list.add(recipe);
+                    if(toAdd ==1&&(recipe.getIngredient1().contains(searchText)||recipe.getIngredient2().contains(searchText)||recipe.getIngredient3().contains(searchText))){
+                        list.add(recipe);
+                    }
+//                    if(!list.contains(recipe)){
+//                        Log.d(TAG,"first show1");
+//
+//                        list.add(recipe);
+//                    }
+//                    else{
+//                        Log.d(TAG,"Duplicated1");
+//                    }
 
                 }
                 mAdapter.notifyDataSetChanged();
@@ -102,81 +125,96 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
             }
         });
 
-        query2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                list.clear();
-                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
-                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
-                    if(recipe.getIngredient1().contains("nuts")||recipe.getIngredient2().contains("nuts")||recipe.getIngredient3().contains("nuts")){
-
-                        continue;
-                    }
-
-                    list.add(recipe);
-
-                }
-                mAdapter.notifyDataSetChanged();
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        query3.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                list.clear();
-                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
-                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
-                    if(recipe.getIngredient1().contains("nuts")||recipe.getIngredient2().contains("nuts")||recipe.getIngredient3().contains("nuts")){
-
-                        continue;
-                    }
-
-                    list.add(recipe);
-
-                }
-                mAdapter.notifyDataSetChanged();
+//        query2.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+////                list.clear();
+//                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
+//                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
+//                    if(recipe.getIngredient1().contains("nuts")||recipe.getIngredient2().contains("nuts")||recipe.getIngredient3().contains("nuts")){
+//
+//                        continue;
+//                    }
+//
+//                    if(!list.contains(recipe)){
+//                        list.add(recipe);
+//                        Log.d(TAG,"first show2");
+//                    }
+//                    else{
+//                        Log.d(TAG,"Duplicated2");
+//                    }
+//                }
+//                mAdapter.notifyDataSetChanged();
+//
 
 
+//            }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        query4.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                list.clear();
-                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
-                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
-                    if(recipe.getIngredient1().contains("nuts")||recipe.getIngredient2().contains("nuts")||recipe.getIngredient3().contains("nuts")){
-
-                        continue;
-                    }
-
-                    list.add(recipe);
-
-                }
-                mAdapter.notifyDataSetChanged();
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//        query3.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+////                list.clear();
+//                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
+//                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
+//                    if(recipe.getIngredient1().contains("nuts")||recipe.getIngredient2().contains("nuts")||recipe.getIngredient3().contains("nuts")){
+//
+//                        continue;
+//                    }
+//
+//                    if(!list.contains(recipe)){
+//                        list.add(recipe);
+//                    }
+//                    else{
+//                        Log.d(TAG,"Duplicated3");
+//                    }
+//
+//                }
+//                mAdapter.notifyDataSetChanged();
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//        query4.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+////                list.clear();
+//                for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
+//                    Recipe recipe=recipeSnapshot.getValue(Recipe.class);
+//                    if(recipe.getIngredient1().contains("nuts")||recipe.getIngredient2().contains("nuts")||recipe.getIngredient3().contains("nuts")){
+//
+//                        continue;
+//                    }
+//
+//                    if(!list.contains(recipe)){
+//                        list.add(recipe);
+//                    }
+//                    else{
+//                        Log.d(TAG,"Duplicated4");
+//                    }
+//
+//                }
+//                mAdapter.notifyDataSetChanged();
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
 
@@ -199,7 +237,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
 
         @Override
         public void onClick(View view){
-            Intent intent=RecipeActivity.newIntent(SearchRecipeActivity.this,mRecipe.getRecipeId(),mRecipe.getRecipeName(),mRecipe.getIngredient1(),mRecipe.getImageId());
+            Intent intent=RecipeActivity.newIntent(SearchRecipeActivity.this,mRecipe.getRecipeId(),mRecipe.getRecipeName(),mRecipe.getIngredient1(),mRecipe.getIngredient2(),mRecipe.getIngredient3(),mRecipe.getImageId());
             startActivity(intent);
         }
 

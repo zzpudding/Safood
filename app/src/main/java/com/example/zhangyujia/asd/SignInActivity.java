@@ -1,6 +1,7 @@
 package com.example.zhangyujia.asd;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
                             password.setText("");
 
 //                           Intent intent=new Intent(SignInActivity.this, TagActivity.class);
-                            Intent intent=new Intent(SignInActivity.this, InitialSettingActivity.class);
+                            Intent intent=new Intent(SignInActivity.this, TagActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(SignInActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();

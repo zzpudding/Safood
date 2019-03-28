@@ -3,13 +3,14 @@
     package="com.example.zhangyujia.asd">
 
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="test"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchRecipeActivity"></activity>
+        <activity android:name=".SearchRecipeActivity" />
         <activity android:name=".FindStoreActivity" />
         <activity android:name=".ViewShopListActivity" />
         <activity android:name=".GenerateShopListActivity" />
