@@ -28,27 +28,27 @@
         <activity android:name=".ViewShopListActivity" />
         <activity android:name=".GenerateShopListActivity" />
         <activity
-            android:name=".CookbookActivity"
-            android:launchMode="singleTop" />
+                android:name=".CookbookActivity"
+                android:launchMode="singleTop"/>
         <activity
-            android:name=".RecipeActivity"
-            android:launchMode="singleTop" />
+                android:name=".RecipeActivity"
+                android:launchMode="singleTop"/>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+                android:name=".MainActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-            android:name=".StartActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+                android:name=".StartActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUpActivity"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+                android:name=".SignUpActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->

@@ -100,7 +100,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
                         }
                     }
 
-                    if(toAdd ==1&&(recipe.getIngredient1().contains(searchText)||recipe.getIngredient2().contains(searchText)||recipe.getIngredient3().contains(searchText))){
+                    if(toAdd ==1&&(recipe.getRecipeName().contains(searchText)||recipe.getIngredient1().contains(searchText)||recipe.getIngredient2().contains(searchText)||recipe.getIngredient3().contains(searchText))){
                         list.add(recipe);
                     }
 //                    if(!list.contains(recipe)){
