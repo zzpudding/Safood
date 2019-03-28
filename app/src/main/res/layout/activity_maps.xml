@@ -63,13 +63,13 @@
             android:text="Kroger"/>
 
     <Button
-            android:id="@+id/B_to"
+            android:id="@+id/B_costco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/B_Kroger"
             android:layout_toEndOf="@+id/B_Kroger"
             android:onClick="onClick"
-            android:text="To" />
+            android:text="Costco"/>
 
 
 </RelativeLayout>

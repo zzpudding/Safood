@@ -43,9 +43,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleApiClient client;
     private LocationRequest locationRequest;
     private Location lastlocation;
-    private Marker currentLocationmMarker;
+    private Marker currentLocationMarker;
     public static final int REQUEST_LOCATION_CODE = 99;
-    int PROXIMITY_RADIUS = 10000;
+    int PROXIMITY_RADIUS = 50;
     double latitude,longitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,9 +118,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         lastlocation = location;
-        if(currentLocationmMarker != null)
+        if(currentLocationMarker != null)
         {
-            currentLocationmMarker.remove();
+            currentLocationMarker.remove();
 
         }
         Log.d("lat = ",""+latitude);
@@ -129,9 +129,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerOptions.position(latLng);
         markerOptions.title("Current Location");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-        currentLocationmMarker = mMap.addMarker(markerOptions);
+        currentLocationMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(15));
 
         if(client != null)
         {
@@ -169,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 markerOptions.title(location);
                                 mMap.addMarker(markerOptions);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
                             }
                         }
                     } catch (IOException e) {
@@ -209,6 +209,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Kroger", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.B_costco:
+                mMap.clear();
+                String costco = "costco";
+                url = getUrl(latitude, longitude, costco);
+                dataTransfer[0] = mMap;
+                dataTransfer[1] = url;
+
+                getNearbyPlacesData.execute(dataTransfer);
+                Toast.makeText(MapsActivity.this, "Showing Nearby Costco", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
@@ -221,7 +231,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googlePlaceUrl.append("&radius="+PROXIMITY_RADIUS);
         googlePlaceUrl.append("&type="+nearbyPlace);
         googlePlaceUrl.append("&sensor=true");
-        googlePlaceUrl.append("&key="+"AIzaSyBLEPBRfw7sMb73Mr88L91Jqh3tuE4mKsE");
+        googlePlaceUrl.append("&key="+"AIzaSyAVxzNggxN6KWQOiTXUMFJgK-2UZWp7ulQ");
 
         Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
 
