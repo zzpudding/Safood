@@ -36,6 +36,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
     private Button signOutBtn;
+    private Button setAllergens;
     private FirebaseAuth mAuth;
     private OnFragmentInteractionListener mListener;
 
@@ -81,18 +82,34 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
         signOutBtn=view.findViewById(R.id.sign_out);
+        setAllergens=view.findViewById(R.id.add_allergens);
         signOutBtn.setOnClickListener(this);
+        setAllergens.setOnClickListener(this);
         return view;
     }
     @Override
-    public void onClick(View view){
-        mAuth=FirebaseAuth.getInstance();
-        mAuth.signOut();
-        getActivity().finish();
-        Intent intent = new Intent(getActivity(),StartActivity.class);
-        startActivity(intent);
-        Toast.makeText(getActivity(),"Signed Out", Toast.LENGTH_SHORT).show();
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.sign_out: {
+                mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                getActivity().finish();
+                Intent intent1 = new Intent(getActivity(), StartActivity.class);
+                startActivity(intent1);
+                Toast.makeText(getActivity(), "Signed Out", Toast.LENGTH_SHORT).show();
+            }
+            case R.id.add_allergens: {
+
+                Intent intent2 = new Intent(getActivity(), InitialSettingActivity.class);
+                startActivity(intent2);
+//                Toast.makeText(getActivity(), "Signed Out", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
+
+
+
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

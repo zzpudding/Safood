@@ -327,7 +327,7 @@ public class CookbookFragment extends Fragment {
 
         @Override
         public void onClick(View view){
-            Intent intent=RecipeActivity.newIntent(getActivity(),mRecipe.getRecipeId(),mRecipe.getRecipeName(),mRecipe.getIngredient1(),mRecipe.getImageId());
+            Intent intent=RecipeActivity.newIntent(getActivity(),mRecipe.getRecipeId(),mRecipe.getRecipeName(),mRecipe.getIngredient1(),mRecipe.getIngredient2(),mRecipe.getIngredient3(),mRecipe.getImageId());
             startActivity(intent);
         }
 

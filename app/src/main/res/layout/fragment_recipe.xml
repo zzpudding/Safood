@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,12 +11,28 @@
     <ImageView
         android:id="@+id/recipe_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="250dp"/>
+
+        <!--<ImageButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:-->
+        <!--/>-->
 
     <TextView
         android:id="@+id/recipe_detail"
         android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:scrollbars="vertical"
+        android:singleLine="false"/>
+
+    <Button
+        android:id="@+id/add_cart"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/add_to_shopping_cart"
+        android:background="@color/colorTextContent"
+        android:textColor="@color/colorWhite"
+        />
 
 </LinearLayout>

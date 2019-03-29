@@ -1,5 +1,6 @@
 package com.example.zhangyujia.asd;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +54,8 @@ public class SignUpActivity extends AppCompatActivity{
                                         username.setText("");
                                         password1.setText("");
                                         password2.setText("");
+                                        Intent intent=new Intent(SignUpActivity.this, InitialSettingActivity.class);
+                                        startActivity(intent);
                                     } else {
                                         Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }

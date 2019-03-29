@@ -4,12 +4,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
@@ -21,21 +24,26 @@ import com.squareup.picasso.Picasso;
  * Use the {@link RecipeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecipeFragment extends Fragment {
+public class RecipeFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_RECIPE_ID = "recipe_id";
     private static final String ARG_RECIPE_NAME = "recipe_name";
     private static final String ARG_RECIPE_INGREDIENT1 = "recipe_ingredient1";
+    private static final String ARG_RECIPE_INGREDIENT2 = "recipe_ingredient2";
+    private static final String ARG_RECIPE_INGREDIENT3 = "recipe_ingredient3";
     private static final String ARG_RECIPE_IMAGE = "recipe_image";
     // TODO: Rename and change types of parameters
     private String mRecipeId;
     private String mRecipeName;
     private String mRecipeIngredient1;
+    private String mRecipeIngredient2;
+    private String mRecipeIngredient3;
     private String mRecipeImageId;
     private Recipe mRecipe;
     private ImageView mRecipeImage;
     private TextView mRecipeDetail;
+    private Button mAddCartBtn;
 
     private OnFragmentInteractionListener mListener;
 
@@ -60,12 +68,14 @@ public class RecipeFragment extends Fragment {
      * @return A new instance of fragment RecipeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecipeFragment newInstance(String recipeId,String recipeName,String recipeIngredient1,String recipeImage) {
+    public static RecipeFragment newInstance(String recipeId,String recipeName,String recipeIngredient1,String recipeIngredient2,String recipeIngredient3,String recipeImage) {
         RecipeFragment fragment = new RecipeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_RECIPE_ID, recipeId);
         args.putString(ARG_RECIPE_NAME, recipeName);
         args.putString(ARG_RECIPE_INGREDIENT1, recipeIngredient1);
+        args.putString(ARG_RECIPE_INGREDIENT2, recipeIngredient2);
+        args.putString(ARG_RECIPE_INGREDIENT3, recipeIngredient3);
         args.putString(ARG_RECIPE_IMAGE, recipeImage);
         fragment.setArguments(args);
         return fragment;
@@ -78,8 +88,10 @@ public class RecipeFragment extends Fragment {
             mRecipeId = getArguments().getString(ARG_RECIPE_ID);
             mRecipeName = getArguments().getString(ARG_RECIPE_NAME);
             mRecipeIngredient1=getArguments().getString(ARG_RECIPE_INGREDIENT1);
+            mRecipeIngredient2=getArguments().getString(ARG_RECIPE_INGREDIENT2);
+            mRecipeIngredient3=getArguments().getString(ARG_RECIPE_INGREDIENT3);
             mRecipeImageId=getArguments().getString(ARG_RECIPE_IMAGE);
-
+            mRecipe=new Recipe(mRecipeId,mRecipeName,mRecipeIngredient1,mRecipeIngredient2,mRecipeIngredient3,mRecipeImageId);
 
         }
     }
@@ -94,10 +106,16 @@ public class RecipeFragment extends Fragment {
 
 //        mRecipeImage.setImageResource(getArguments().getInt(ARG_RECIPE_IMAGE));
         mRecipeDetail=(TextView) view.findViewById(R.id.recipe_detail);
+        mRecipeDetail.setMovementMethod(ScrollingMovementMethod.getInstance());
         mRecipeDetail.setText(mRecipeId +mRecipeName+mRecipeIngredient1);
+        mAddCartBtn=(Button) view.findViewById(R.id.add_cart);
+        mAddCartBtn.setOnClickListener(this);
         return view;
     }
+   @Override
+    public void onClick(View view){
 
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
