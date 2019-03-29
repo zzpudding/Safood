@@ -35,7 +35,7 @@ public class DataParser {
 
             reference = googlePlaceJson.getString("reference");
 
-            googlePlaceMap.put("place_name", placeName);
+            googlePlaceMap.put("name", placeName);
             googlePlaceMap.put("vicinity", vicinity);
             googlePlaceMap.put("lat", latitude);
             googlePlaceMap.put("lng", longitude);
@@ -51,6 +51,8 @@ public class DataParser {
     }
     private List<HashMap<String, String>> getPlaces(JSONArray jsonArray)
     {
+//        JSONArray jar = jsonArray.getJSONArray();
+
         int count = jsonArray.length();
         List<HashMap<String, String>> placelist = new ArrayList<>();
         HashMap<String, String> placeMap = null;
