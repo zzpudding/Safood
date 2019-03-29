@@ -53,6 +53,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
         mAllergens= LitePal.select("allergyTypeName","allergy_1","allergy_2").where("isChecked = ?","1").find(Allergy.class);
 
         list=new ArrayList<Recipe>();
+
         mAdapter = new SearchRecipeActivity.RecipeAdapter(list);
         mSearchResults.setAdapter(mAdapter);
 
@@ -85,6 +86,8 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                list.clear();
                 if(!dataSnapshot.exists()){
+                    Toast.makeText(SearchRecipeActivity.this,
+                            "No recipes found", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
@@ -215,6 +218,10 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
 //
 //            }
 //        });
+        if(list.size()==0){
+            Toast.makeText(SearchRecipeActivity.this,
+                    "No recipes found", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

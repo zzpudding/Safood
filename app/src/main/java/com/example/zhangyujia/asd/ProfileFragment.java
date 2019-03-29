@@ -97,12 +97,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                 Intent intent1 = new Intent(getActivity(), StartActivity.class);
                 startActivity(intent1);
                 Toast.makeText(getActivity(), "Signed Out", Toast.LENGTH_SHORT).show();
+                break;
             }
             case R.id.add_allergens: {
 
                 Intent intent2 = new Intent(getActivity(), InitialSettingActivity.class);
                 startActivity(intent2);
 //                Toast.makeText(getActivity(), "Signed Out", Toast.LENGTH_SHORT).show();
+                break;
             }
         }
     }

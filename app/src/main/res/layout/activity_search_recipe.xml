@@ -21,6 +21,8 @@
         android:id="@+id/search_imgbtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:background="@drawable/search_icon"
+
         android:layout_alignEnd="@+id/search_area"
         android:layout_alignRight="@+id/search_area" />
 
