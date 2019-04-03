@@ -116,6 +116,11 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
 //                    }
 
                 }
+
+                if(list.size()==0){
+                    Toast.makeText(SearchRecipeActivity.this,
+                            "No recipes found", Toast.LENGTH_SHORT).show();
+                }
                 mAdapter.notifyDataSetChanged();
 
 
@@ -218,10 +223,6 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
 //
 //            }
 //        });
-        if(list.size()==0){
-            Toast.makeText(SearchRecipeActivity.this,
-                    "No recipes found", Toast.LENGTH_SHORT).show();
-        }
     }
 
 
