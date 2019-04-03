@@ -2,6 +2,7 @@ package com.example.zhangyujia.asd;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -41,12 +42,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "addData : Adding " + s + "to" + TABLE_NAME);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
-        if(result == -1) {
+        if (result == -1) {
             return false;
         } else {
             return true;
         }
     }
 
+    public Cursor getData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        return data;
 
+
+    }
 }

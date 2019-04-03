@@ -1,21 +1,49 @@
 package com.example.zhangyujia.asd;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.media.CamcorderProfile.get;
 
 public class GenerateShopListActivity extends AppCompatActivity {
-    private List mlist=new ArrayList() ;
+    private static final String TAG = "NewShopListActivity";
+
+    DatabaseHelper mDatabaseHelper;
+
+    private ListView mListView;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_shop_list);
-        mlist.add("sadad");
-        mlist.add("weqwe");
-        String daan=mlist.get(0).toString();
+        mListView = (ListView) findViewById(R.id.new_shoppingList);
+        mDatabaseHelper =  new DatabaseHelper(this);
+
+        populateListView();
+    }
+
+    private void populateListView(){
+        Log.d(TAG, "populateListView : Displaying data in the ListView.");
+
+        //get data and append to the list
+        Cursor data = mDatabaseHelper.getData();
+        ArrayList<String> listData = new ArrayList<>();
+        while(data.moveToNext()){
+            //get the value from database in column 1
+            //add it to the ArrayList
+            listData.add(data.getString(1));
+        }
+        //create the list adapter and set the adapter
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+        mListView.setAdapter(adapter);
     }
 }
