@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -158,10 +159,14 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
 
     //Method for generate a list of recipe_id
     public void addToCart(View view) {
-        List<String> mlist=new ArrayList<>();
-        mlist.add(ARG_RECIPE_ID);
+        List <String> mlist=new ArrayList <String>();
+        mlist.add(mRecipeId);
+//        String s = mlist.get(0);
         Toast.makeText(getActivity(),"Added to cart!",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
+
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
