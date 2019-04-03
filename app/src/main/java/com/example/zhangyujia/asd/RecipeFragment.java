@@ -11,9 +11,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.lang.String;
 
 
 /**
@@ -109,13 +116,21 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
         mRecipeDetail.setMovementMethod(ScrollingMovementMethod.getInstance());
         mRecipeDetail.setText(mRecipeId +mRecipeName+mRecipeIngredient1);
         mAddCartBtn=(Button) view.findViewById(R.id.add_cart);
-        mAddCartBtn.setOnClickListener(this);
+        mAddCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToCart(v);
+            }
+        });
         return view;
     }
-   @Override
+
+    @Override
     public void onClick(View view){
 
     }
+
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -140,6 +155,14 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
         mListener = null;
     }
 
+
+    //Method for generate a list of recipe_id
+    public void addToCart(View view) {
+        List<String> mlist=new ArrayList<>();
+        mlist.add(ARG_RECIPE_ID);
+        Toast.makeText(getActivity(),"Added to cart!",Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -155,12 +178,13 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
         void onFragmentInteraction(Uri uri);
     }
 
+
 //    public static RecipeFragment newInstance(String recipeId){
 //        Bundle args=new Bundle();
 //        args.putCharSequence(ARG_RECIPE_ID,recipeId);
-//
 //        RecipeFragment fragment = new RecipeFragment();
 //        fragment.setArguments(args);
 //        return fragment;
 //    }
+
 }
