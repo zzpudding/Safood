@@ -7,23 +7,23 @@
 
     <EditText
         android:id="@+id/TF_location"
-        android:layout_width="240dp"
-        android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="70dp"
         android:ems="10"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="60dp"
         android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/B_search"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/TF_location"
-        android:layout_toRightOf="@+id/TF_location"
-        android:onClick="onClick"
-        android:text="Search" />
+    <ImageButton
+        android:id="@+id/btn_search_map"
+        android:layout_marginTop="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/search_icon"
+        android:layout_alignRight="@+id/TF_location"
+        android:onClick="onClick" />
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
