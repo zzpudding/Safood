@@ -13,7 +13,7 @@
 
 
     <Button
-        android:text="@string/add_recipe"
+        android:text="@string/btn_add_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" tools:layout_editor_absoluteY="169dp"
         tools:layout_editor_absoluteX="65dp" android:id="@+id/add_recipe_btn"/>
