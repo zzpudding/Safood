@@ -18,7 +18,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ import java.lang.String;
  * Use the {@link RecipeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecipeFragment extends Fragment implements View.OnClickListener{
+public class RecipeFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_RECIPE_ID = "recipe_id";
@@ -42,6 +41,11 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
     private static final String ARG_RECIPE_INGREDIENT2 = "recipe_ingredient2";
     private static final String ARG_RECIPE_INGREDIENT3 = "recipe_ingredient3";
     private static final String ARG_RECIPE_IMAGE = "recipe_image";
+
+    private static final String Recipe_name = "Recipe Name: ";
+    private static final String Ingredients = "Ingredients: ";
+
+
     // TODO: Rename and change types of parameters
     private String mRecipeId;
     private String mRecipeName;
@@ -51,7 +55,11 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
     private String mRecipeImageId;
     private Recipe mRecipe;
     private ImageView mRecipeImage;
-    private TextView mRecipeDetail;
+    private TextView mRecipeDetailName;
+    private TextView mRecipeDetailNameInput;
+    private TextView mRecipeDetailIngre;
+    private TextView mRecipeDetailIngreInput;
+
     private Button mAddCartBtn;
     private DatabaseHelper mDatabaseHelper;
     private OnFragmentInteractionListener mListener;
@@ -62,7 +70,6 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
 //    args.putCharSequence(ARG_MY_STRING,myString);
 
 
-
     public RecipeFragment() {
         // Required empty public constructor
 
@@ -71,13 +78,14 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
+     * <p>
      * /@param param1 Parameter 1.
      * /@param param2 Parameter 2.
+     *
      * @return A new instance of fragment RecipeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecipeFragment newInstance(String recipeId,String recipeName,String recipeIngredient1,String recipeIngredient2,String recipeIngredient3,String recipeImage) {
+    public static RecipeFragment newInstance(String recipeId, String recipeName, String recipeIngredient1, String recipeIngredient2, String recipeIngredient3, String recipeImage) {
         RecipeFragment fragment = new RecipeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_RECIPE_ID, recipeId);
@@ -96,11 +104,11 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
         if (getArguments() != null) {
             mRecipeId = getArguments().getString(ARG_RECIPE_ID);
             mRecipeName = getArguments().getString(ARG_RECIPE_NAME);
-            mRecipeIngredient1=getArguments().getString(ARG_RECIPE_INGREDIENT1);
-            mRecipeIngredient2=getArguments().getString(ARG_RECIPE_INGREDIENT2);
-            mRecipeIngredient3=getArguments().getString(ARG_RECIPE_INGREDIENT3);
-            mRecipeImageId=getArguments().getString(ARG_RECIPE_IMAGE);
-            mRecipe=new Recipe(mRecipeId,mRecipeName,mRecipeIngredient1,mRecipeIngredient2,mRecipeIngredient3,mRecipeImageId);
+            mRecipeIngredient1 = getArguments().getString(ARG_RECIPE_INGREDIENT1);
+            mRecipeIngredient2 = getArguments().getString(ARG_RECIPE_INGREDIENT2);
+            mRecipeIngredient3 = getArguments().getString(ARG_RECIPE_INGREDIENT3);
+            mRecipeImageId = getArguments().getString(ARG_RECIPE_IMAGE);
+            mRecipe = new Recipe(mRecipeId, mRecipeName, mRecipeIngredient1, mRecipeIngredient2, mRecipeIngredient3, mRecipeImageId);
 
         }
     }
@@ -110,25 +118,38 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
-        mRecipeImage= (ImageView) view.findViewById(R.id.recipe_image);
+        mRecipeImage = (ImageView) view.findViewById(R.id.recipe_image);
         Picasso.with(getContext()).load(mRecipeImageId).placeholder(R.drawable.default_recipe_pic).fit().into(mRecipeImage);
 
-//        mRecipeImage.setImageResource(getArguments().getInt(ARG_RECIPE_IMAGE));
-        mRecipeDetail=(TextView) view.findViewById(R.id.recipe_detail);
-        mRecipeDetail.setMovementMethod(ScrollingMovementMethod.getInstance());
-        mRecipeDetail.setText(mRecipeId +mRecipeName+mRecipeIngredient1);
-        mAddCartBtn=(Button) view.findViewById(R.id.add_cart);
+//      mRecipeImage.setImageResource(getArguments().getInt(ARG_RECIPE_IMAGE));
+        mRecipeDetailName = (TextView) view.findViewById(R.id.recipe_name);
+        mRecipeDetailNameInput = (TextView) view.findViewById(R.id.recipe_detail_name);
+        mRecipeDetailIngre = (TextView) view.findViewById(R.id.recipe_ingre);
+        mRecipeDetailIngreInput = (TextView) view.findViewById(R.id.recipe_detail_ingre);
+
+        mRecipeDetailIngreInput.setMovementMethod(ScrollingMovementMethod.getInstance());
+        mRecipeDetailIngre.setMovementMethod(ScrollingMovementMethod.getInstance());
+        mRecipeDetailNameInput.setMovementMethod(ScrollingMovementMethod.getInstance());
+        mRecipeDetailName.setMovementMethod(ScrollingMovementMethod.getInstance());
+
+        mRecipeDetailName.setText(Recipe_name);
+        mRecipeDetailNameInput.setText(mRecipeName);
+        mRecipeDetailIngre.setText(Ingredients);
+        mRecipeDetailIngreInput.setText(mRecipeIngredient1 + '\n' + mRecipeIngredient2 + '\n' + mRecipeIngredient3);
+
+
+        mAddCartBtn = (Button) view.findViewById(R.id.add_cart);
         mAddCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToCart(mRecipeName,mRecipeIngredient1,mRecipeIngredient2,mRecipeIngredient3,mRecipeImageId);
+                addToCart(mRecipeName, mRecipeIngredient1, mRecipeIngredient2, mRecipeIngredient3, mRecipeImageId);
             }
         });
         return view;
     }
 
     @Override
-    public void onClick(View view){
+    public void onClick(View view) {
 
     }
 
@@ -159,18 +180,17 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
 
 
     //Method for generate a list of recipe_id
-    public void addToCart(String mRecipeName,String mRecipeIngredient1,String mRecipeIngredient2,String mRecipeIngredient3,String mRecipeImageId) {
-        mDatabaseHelper=new DatabaseHelper(getContext());
-        mDatabaseHelper.addData(mRecipeName, mRecipeIngredient1, mRecipeIngredient2,mRecipeIngredient3 ,mRecipeImageId );
+    public void addToCart(String mRecipeName, String mRecipeIngredient1, String mRecipeIngredient2, String mRecipeIngredient3, String mRecipeImageId) {
+        mDatabaseHelper = new DatabaseHelper(getContext());
+        mDatabaseHelper.addData(mRecipeName, mRecipeIngredient1, mRecipeIngredient2, mRecipeIngredient3, mRecipeImageId);
 //        ContentValues contentValues=new ContentValues();
 //        contentValues.put("", );
 
 
-
-        List <String> mlist=new ArrayList <String>();
+        List<String> mlist = new ArrayList<String>();
         mlist.add(mRecipeId);
 //        String s = mlist.get(0);
-        Toast.makeText(getActivity(),"Added to cart!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Added to cart!", Toast.LENGTH_SHORT).show();
 //        Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
 
     }
