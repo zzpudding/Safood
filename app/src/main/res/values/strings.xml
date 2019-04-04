@@ -10,11 +10,15 @@
     <!--button name-->
     <string name="btn_sign_in">Sign In</string>
     <string name="btn_sign_up">Sign Up</string>
+    <string name="btn_sign_out">Sign Out</string>
     <string name="btn_confirm">Confirm</string>
     <string name="btn_clear">Clear</string>
     <string name="btn_go">GO</string>
     <string name="btn_add_recipe">Add new Recipe</string>
     <string name="btn_add_cart">Add to shopping cart</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_set_allergy">Set Allergens</string>
 
     <!--text-->
     <string name="usr_text">Username</string>
@@ -23,6 +27,8 @@
     <string name="userName">Welcome!</string>
     <string name="allergyInfo">Select your allergen here.\nNote: You can always change it in your account setting. :)
     </string>
+    <string name="text_search_hint_recipe">Type what you want</string>
+    <string name="text_hint_add_recipe">Enter new recipe name</string>
 
     <!--image button content-->
     <string name="img_btn_gen_sl">Generate a \nshopping list</string>

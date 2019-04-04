@@ -3,17 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ProfileFragment">
 
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/sign_out"
-        android:text="Sign Out"/>
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="24sp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_round_green2"
+        android:text="@string/btn_sign_out"/>
+
     <Button
         android:id="@+id/add_allergens"
-        android:text="Set Allergens"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/btn_set_allergy"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        android:background="@drawable/button_round_home2" />
 
 </LinearLayout>

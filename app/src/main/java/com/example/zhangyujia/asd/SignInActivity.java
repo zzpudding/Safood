@@ -19,7 +19,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
-    private Button signin;
+    private Button signIn;
     private FirebaseAuth mAuth;
 
 
@@ -30,11 +30,12 @@ public class SignInActivity extends AppCompatActivity {
 
         username = findViewById(R.id.etLoginUsername);
         password = findViewById(R.id.etLoginPassword);
-        signin = findViewById(R.id.signIn_btn);
+        signIn = findViewById(R.id.signIn_btn);
 
         mAuth = FirebaseAuth.getInstance();
+        getSupportActionBar().setTitle("Sign In");
 
-        signin.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

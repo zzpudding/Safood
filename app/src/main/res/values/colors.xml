@@ -4,15 +4,18 @@
     <color name="colorPrimaryDark">#F2594B</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorTheme">#F2594B</color>
     <color name="colorTextBg">#FFFAEC</color>
     <color name="colorBottomBg">#EBEAEA</color>
     <color name="colorTextContent">#7F7F7F</color>
-    
+    <color name="delete">#D9534F</color>
+    <color name="success">#5CB75C</color>
+
+    <!--cart page-->
     <color name="green1">#7B9BA6</color>
     <color name="green2">#8DA592</color>
     <color name="green3">#CBD9D6</color>
 
+    <!--home page-->
     <color name="home1">#BB8581</color>
     <color name="home2">#F2A88C</color>
     <color name="home3">#D9CBA3</color>

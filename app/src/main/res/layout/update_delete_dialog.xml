@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter new recipe name"
-                tools:layout_editor_absoluteY="0dp" tools:layout_editor_absoluteX="0dp"
-                android:id="@+id/editTextNewName" android:layout_weight="1"/>
+            android:id="@+id/editTextNewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="@string/text_hint_add_recipe"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
         <Button
-                android:text="UPDATE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" tools:layout_editor_absoluteY="113dp"
-                tools:layout_editor_absoluteX="134dp" android:id="@+id/buttonUpdate" android:layout_weight="1"/>
+            android:id="@+id/buttonUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/success"
+            android:textColor="@color/colorWhite"
+            android:layout_weight="1"
+            android:text="@string/btn_update"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="113dp" />
+
         <Button
-                android:text="DELETE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" tools:layout_editor_absoluteY="126dp"
-                tools:layout_editor_absoluteX="65dp" android:id="@+id/buttonDelete" android:layout_weight="1"/>
+            android:id="@+id/buttonDelete"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/delete"
+            android:textColor="@color/colorWhite"
+            android:layout_weight="1"
+            android:text="@string/btn_delete"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="126dp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

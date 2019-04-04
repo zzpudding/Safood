@@ -43,6 +43,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Search for recipes");
         setContentView(R.layout.activity_search_recipe);
         mSearchArea=findViewById(R.id.search_area);
         mSearchResults=findViewById(R.id.search_results);

@@ -98,8 +98,7 @@ public class ViewShopListActivity extends AppCompatActivity {
     private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder> {
             private List<Recipe> mRecipes;
 
-            public RecipeAdapter(List<Recipe
-                    > recipes) {
+            public RecipeAdapter(List<Recipe> recipes) {
                 mRecipes = recipes;
 
             }
