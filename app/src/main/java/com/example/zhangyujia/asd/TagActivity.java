@@ -25,6 +25,7 @@ public class TagActivity extends AppCompatActivity implements HomeFragment.OnFra
     private Fragment mTab1;
     private Fragment mTab2;
     private Fragment mTab3;
+    private DatabaseHelper mDatabaseHelper;
 //    private CookbookFragment mCookbook;
 //    private AddRecipeFragment mAddRecipeFragment;
 
@@ -45,7 +46,8 @@ public class TagActivity extends AppCompatActivity implements HomeFragment.OnFra
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.tag_activity);
-
+        mDatabaseHelper=new DatabaseHelper(this);
+        mDatabaseHelper.getWritableDatabase();
 
         mTabHome = findViewById(R.id.id_home);
         mTabCart = findViewById(R.id.id_cart);

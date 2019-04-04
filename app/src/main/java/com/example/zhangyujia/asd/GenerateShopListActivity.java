@@ -27,7 +27,7 @@ public class GenerateShopListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_generate_shop_list);
         mListView = (ListView) findViewById(R.id.new_shoppingList);
         mDatabaseHelper =  new DatabaseHelper(this);
-
+        getSupportActionBar().setTitle("Shopping List");
         populateListView();
     }
 
@@ -40,7 +40,9 @@ public class GenerateShopListActivity extends AppCompatActivity {
         while(data.moveToNext()){
             //get the value from database in column 1
             //add it to the ArrayList
-            listData.add(data.getString(1));
+            listData.add(data.getString(2));
+            listData.add(data.getString(3));
+            listData.add(data.getString(4));
         }
         //create the list adapter and set the adapter
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);

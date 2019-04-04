@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".RecipeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-            android:id="@+id/recipe_image"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"/>
 
-    <!--<ImageButton-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:-->
-    <!--/>-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  tools:context=".RecipeFragment">
 
-    <TextView
-            android:id="@+id/recipe_detail"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scrollbars="vertical"
-            android:singleLine="false"/>
+        <!-- TODO: Update blank fragment layout -->
+        <ImageView
+                android:id="@+id/recipe_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
 
-    <Button
-            android:id="@+id/add_cart"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:text="@string/add_to_shopping_cart"
-            android:background="@color/colorTextContent"
-            android:textColor="@color/colorWhite"
-            android:onClick="addToCart"
-    />
+        <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:-->
+        <!--/>-->
 
-</LinearLayout>
+        <TextView
+                android:id="@+id/recipe_detail"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scrollbars="vertical"
+                android:singleLine="false"/>
+
+        <Button
+                android:id="@+id/add_cart"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:text="@string/add_to_shopping_cart"
+                android:background="@color/colorTextContent"
+                android:textColor="@color/colorWhite"
+                android:onClick="addToCart"
+        />
+
+    </LinearLayout>
+</ScrollView>

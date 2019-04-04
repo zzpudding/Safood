@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "shopping_list";
     private static final String list_number = "list_number";
-    private static final String list_content = "list_content";
+//    private static final String recipe_name = "list_content";
 
 
     public DatabaseHelper(Context context) {
@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable =
-                "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT," + list_content + "TEXT)";
+                "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT," + "recipe_name text,"+ "ingredient1 text,"+"ingredient2 text,"+"ingredient3 text,"+"imageId text)";
         db.execSQL(createTable);
     }
 
@@ -34,12 +34,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String s) {
+    public boolean addData(String recipeName, String ingredient1, String ingredient2, String ingredient3,String imageId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(list_content, s);
+        contentValues.put("recipe_name", recipeName);
+        contentValues.put("ingredient1", ingredient1);
+        contentValues.put("ingredient2", ingredient2);
+        contentValues.put("ingredient3", ingredient3);
+        contentValues.put("imageId", imageId);
 
-        Log.d(TAG, "addData : Adding " + s + "to" + TABLE_NAME);
+        Log.d(TAG, "addData : Adding "  + "to" + TABLE_NAME);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         if (result == -1) {

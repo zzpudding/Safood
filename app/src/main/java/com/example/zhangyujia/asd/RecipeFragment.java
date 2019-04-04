@@ -1,5 +1,6 @@
 package com.example.zhangyujia.asd;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -52,7 +53,7 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
     private ImageView mRecipeImage;
     private TextView mRecipeDetail;
     private Button mAddCartBtn;
-
+    private DatabaseHelper mDatabaseHelper;
     private OnFragmentInteractionListener mListener;
 
 //    Bundle args= new Bundle();
@@ -120,7 +121,7 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
         mAddCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToCart(v);
+                addToCart(mRecipeName,mRecipeIngredient1,mRecipeIngredient2,mRecipeIngredient3,mRecipeImageId);
             }
         });
         return view;
@@ -158,7 +159,14 @@ public class RecipeFragment extends Fragment implements View.OnClickListener{
 
 
     //Method for generate a list of recipe_id
-    public void addToCart(View view) {
+    public void addToCart(String mRecipeName,String mRecipeIngredient1,String mRecipeIngredient2,String mRecipeIngredient3,String mRecipeImageId) {
+        mDatabaseHelper=new DatabaseHelper(getContext());
+        mDatabaseHelper.addData(mRecipeName, mRecipeIngredient1, mRecipeIngredient2,mRecipeIngredient3 ,mRecipeImageId );
+//        ContentValues contentValues=new ContentValues();
+//        contentValues.put("", );
+
+
+
         List <String> mlist=new ArrayList <String>();
         mlist.add(mRecipeId);
 //        String s = mlist.get(0);
