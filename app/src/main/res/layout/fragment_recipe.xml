@@ -1,22 +1,24 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:app="http://schemas.android.com/apk/res-auto"
-                  xmlns:tools="http://schemas.android.com/tools"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  tools:context=".RecipeFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".RecipeFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <ImageView
-                android:id="@+id/recipe_image"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"/>
+            android:id="@+id/recipe_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
 
         <!--<ImageButton-->
         <!--android:layout_width="wrap_content"-->
@@ -24,23 +26,56 @@
         <!--android:-->
         <!--/>-->
 
-        <TextView
-                android:id="@+id/recipe_detail"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/recipe_name"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:singleLine="false"/>
+                android:singleLine="false"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/recipe_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:singleLine="false"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/recipe_ingre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:singleLine="false"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/recipe_detail_ingre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:singleLine="false"
+                android:textSize="24sp" />
+        </LinearLayout>
+
 
         <Button
-                android:id="@+id/add_cart"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="bottom"
-                android:text="@string/add_to_shopping_cart"
-                android:background="@color/colorTextContent"
-                android:textColor="@color/colorWhite"
-                android:onClick="addToCart"
-        />
+            android:id="@+id/add_cart"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorTextContent"
+            android:onClick="addToCart"
+            android:text="@string/add_to_shopping_cart"
+            android:textColor="@color/colorWhite" />
 
     </LinearLayout>
 </ScrollView>
