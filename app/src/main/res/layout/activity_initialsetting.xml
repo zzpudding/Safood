@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
-                    android:text="@string/allergySetting"
+                    android:text="@string/title_allergy_setting"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -217,7 +217,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/button_border_dark"
-                    android:text="@string/Confirm_btn_text"
+                    android:text="@string/btn_confirm"
                     android:textColor="@color/colorTextContent"
                     />
 

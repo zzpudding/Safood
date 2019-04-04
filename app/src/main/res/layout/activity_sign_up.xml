@@ -115,7 +115,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_border"
-                android:text="@string/Confirm_btn_text"
+                android:text="@string/btn_confirm"
                 android:textColor="@color/colorWhite" />
 
             <Button
@@ -125,7 +125,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_border"
-                android:text="@string/Clear_btn_text"
+                android:text="@string/btn_clear"
                 android:textColor="@color/colorWhite" />
 
         </LinearLayout>

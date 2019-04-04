@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/button_border"
-                android:text="@string/GO_btn_text"
+                android:text="@string/btn_go"
                 android:textColor="@color/colorWhite" />
         </LinearLayout>
 

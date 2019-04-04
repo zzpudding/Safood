@@ -18,13 +18,13 @@
         android:layout_height="wrap_content" tools:layout_editor_absoluteY="169dp"
         tools:layout_editor_absoluteX="65dp" android:id="@+id/add_recipe_btn"/>
     <Button
-        android:text="@string/cb"
+        android:text="@string/img_btn_cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cookbook_btn"/>
 
     <Button
-        android:text="@string/Confirm_btn_text"
+        android:text="@string/btn_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/allergy_button"/>

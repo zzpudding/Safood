@@ -73,7 +73,7 @@
             android:layout_gravity="bottom"
             android:background="@color/colorTextContent"
             android:onClick="addToCart"
-            android:text="@string/btn_add_to_shopping_cart"
+            android:text="@string/btn_add_cart"
             android:textColor="@color/colorWhite" />
 
     </LinearLayout>

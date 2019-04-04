@@ -3,18 +3,18 @@
     <string name="app_name">Safood</string>
 
     <!--tab name-->
-    <string name="Home">Home</string>
-    <string name="allergySetting">Allergy Setting</string>
+    <string name="title_home">Home</string>
+    <string name="title_allergy_setting">Allergy Setting</string>
     <string name="title_activity_maps">Map</string>
 
     <!--button name-->
-    <string name="signIn_btn_text">Sign In</string>
-    <string name="signUp_btn_text">Sign Up</string>
-    <string name="Confirm_btn_text">Confirm</string>
-    <string name="Clear_btn_text">Clear</string>
-    <string name="GO_btn_text">GO</string>
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_go">GO</string>
     <string name="btn_add_recipe">Add new Recipe</string>
-    <string name="btn_add_to_shopping_cart">Add to shopping cart</string>
+    <string name="btn_add_cart">Add to shopping cart</string>
 
     <!--text-->
     <string name="usr_text">Username</string>
@@ -25,14 +25,13 @@
     </string>
 
     <!--image button content-->
-    <string name="gen_sl">Generate a \nshopping list</string>
-    <string name="view_sl">View shopping list</string>
-    <string name="find_st">Find a store</string>
-    <string name="search">Search recipe</string>
-    <string name="cb">Cookbook</string>
-    <string name="addR">Add a new recipe</string>
+    <string name="img_btn_gen_sl">Generate a \nshopping list</string>
+    <string name="img_btn_view_sl">View shopping list</string>
+    <string name="img_btn_find_st">Find a store</string>
+    <string name="img_btn_search">Search recipe</string>
+    <string name="img_btn_cb">Cookbook</string>
+    <string name="img_btn_addR">Add a new recipe</string>
 
-    
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

@@ -21,7 +21,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/button_round_home1"
-            android:text="@string/search"
+            android:text="@string/img_btn_search"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="28sp" />
@@ -42,7 +42,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/button_round_home2"
-            android:text="@string/cb"
+            android:text="@string/img_btn_cb"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="28sp" />
