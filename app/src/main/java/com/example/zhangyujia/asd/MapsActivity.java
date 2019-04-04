@@ -230,7 +230,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 break;
 
 
-            case R.id.B_walmart:
+            case R.id.btn_walmart:
                 mMap.clear();
                 String walMart = "walmart";
                 String url = getUrl(latitude, longitude, walMart);
@@ -240,7 +240,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Walmart", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.B_Target:
+            case R.id.btn_Target:
                 mMap.clear();
                 String target = "target";
                 url = getUrl(latitude, longitude, target);
@@ -250,7 +250,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Target", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.B_Kroger:
+            case R.id.btn_Kroger:
                 mMap.clear();
                 String kroger = "kroger";
                 url = getUrl(latitude, longitude, kroger);
@@ -260,7 +260,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Kroger", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.B_costco:
+            case R.id.btn_costco:
                 mMap.clear();
                 String costco = "costco";
                 url = getUrl(latitude, longitude, costco);

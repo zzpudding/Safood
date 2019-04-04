@@ -20,6 +20,20 @@
     <string name="btn_delete">Delete</string>
     <string name="btn_set_allergy">Set Allergens</string>
 
+    <!--default market name-->
+    <string name="btn_Costco">Costco</string>
+    <string name="btn_Kroger">Kroger</string>
+    <string name="btn_Target">Target</string>
+    <string name="btn_WalMart">WalMart</string>
+
+    <!--image button content-->
+    <string name="img_btn_gen_sl">Generate a \nshopping list</string>
+    <string name="img_btn_view_sl">View shopping list</string>
+    <string name="img_btn_find_st">Find a store</string>
+    <string name="img_btn_search">Search recipe</string>
+    <string name="img_btn_cb">Cookbook</string>
+    <string name="img_btn_addR">Add a new recipe</string>
+
     <!--text-->
     <string name="usr_text">Username</string>
     <string name="pwd_text">Password</string>
@@ -30,13 +44,7 @@
     <string name="text_search_hint_recipe">Type what you want</string>
     <string name="text_hint_add_recipe">Enter new recipe name</string>
 
-    <!--image button content-->
-    <string name="img_btn_gen_sl">Generate a \nshopping list</string>
-    <string name="img_btn_view_sl">View shopping list</string>
-    <string name="img_btn_find_st">Find a store</string>
-    <string name="img_btn_search">Search recipe</string>
-    <string name="img_btn_cb">Cookbook</string>
-    <string name="img_btn_addR">Add a new recipe</string>
+
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -22,6 +22,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/search_icon"
+        android:layout_alignEnd="@+id/TF_location"
         android:layout_alignRight="@+id/TF_location"
         android:onClick="onClick" />
 
@@ -32,51 +33,51 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/B_walmart"
+        android:layout_below="@+id/btn_walmart"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         tools:context="com.example.priyanka.mapsdemo.MapsActivity" />
 
     <Button
-        android:id="@+id/B_walmart"
+        android:id="@+id/btn_walmart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TF_location"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:onClick="onClick"
-        android:text="WalMart" />
+        android:text="@string/btn_WalMart" />
 
     <Button
-        android:id="@+id/B_Target"
+        android:id="@+id/btn_Target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TF_location"
-        android:layout_toEndOf="@+id/B_walmart"
-        android:layout_toRightOf="@+id/B_walmart"
+        android:layout_toEndOf="@+id/btn_walmart"
+        android:layout_toRightOf="@+id/btn_walmart"
         android:onClick="onClick"
-        android:text="Target" />
+        android:text="@string/btn_Target" />
 
     <Button
-        android:id="@+id/B_Kroger"
+        android:id="@+id/btn_Kroger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TF_location"
-        android:layout_toEndOf="@+id/B_Target"
-        android:layout_toRightOf="@+id/B_Target"
+        android:layout_toEndOf="@+id/btn_Target"
+        android:layout_toRightOf="@+id/btn_Target"
         android:onClick="onClick"
-        android:text="Kroger" />
+        android:text="@string/btn_Kroger" />
 
     <Button
-        android:id="@+id/B_costco"
+        android:id="@+id/btn_costco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/B_Kroger"
-        android:layout_toEndOf="@+id/B_Kroger"
-        android:layout_toRightOf="@+id/B_Kroger"
+        android:layout_alignBottom="@+id/btn_Kroger"
+        android:layout_toEndOf="@+id/btn_Kroger"
+        android:layout_toRightOf="@+id/btn_Kroger"
         android:onClick="onClick"
-        android:text="Costco" />
+        android:text="@string/btn_Costco" />
 
 
 </RelativeLayout>
