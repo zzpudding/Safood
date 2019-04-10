@@ -209,18 +209,6 @@
 
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/allergySet_btn"
-                    android:onClick="finishIniActivity"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/button_border_dark"
-                    android:text="@string/btn_confirm"
-                    android:textColor="@color/colorTextContent"
-                    />
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="50dp"/>

@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.zhangyujia.asd">
+    package="com.example.zhangyujia.asd">
 
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
-
-
 
 
     <application
@@ -26,32 +23,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchRecipeActivity" />
-        <activity android:name=".FindStoreActivity" />
-        <activity android:name=".ViewShopListActivity" />
-        <activity android:name=".GenerateShopListActivity" />
         <activity
-                android:name=".CookbookActivity"
-                android:launchMode="singleTop"/>
+            android:name=".SearchRecipeActivity"
+            android:screenOrientation="portrait" />
         <activity
-                android:name=".RecipeActivity"
-                android:launchMode="singleTop"/>
+            android:name=".FindStoreActivity"
+            android:screenOrientation="portrait" />
         <activity
-                android:name=".MainActivity"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:name=".ViewShopListActivity"
+            android:screenOrientation="portrait" />
         <activity
-                android:name=".StartActivity"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:name=".GenerateShopListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CookbookActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RecipeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".StartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-                android:name=".SignUpActivity"
-                android:launchMode="singleTop"
-                android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+            android:name=".SignUpActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -61,15 +71,18 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-                android:name=".SignInActivity"
-                android:launchMode="singleTop"/>
+            android:name=".SignInActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity
-                android:name=".AddRecipeActivity"
-                android:launchMode="singleTop"/>
+            android:name=".AddRecipeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity
-                android:name=".TagActivity"
-                android:launchMode="singleTask"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:name=".TagActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -79,8 +92,9 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-                android:name=".InitialSettingActivity"
-                android:launchMode="singleTop"/>
+            android:name=".InitialSettingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -90,16 +104,18 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyA7PEs23Yq10g4lGegW_7JV-rc4jyunQBE"/>
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA7PEs23Yq10g4lGegW_7JV-rc4jyunQBE" />
 
 
         <activity
-                android:name=".MapsActivity"
-                android:label="@string/title_activity_maps">
-        </activity>
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait"></activity>
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

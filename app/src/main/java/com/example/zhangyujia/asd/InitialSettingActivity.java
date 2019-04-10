@@ -32,8 +32,6 @@ public class InitialSettingActivity extends Activity {
     public Allergy fish;
     public Allergy treenuts;
 
-    Button allergy_btn;
-
     ImageButton milk_btn;
     ImageButton eggs_btn;
     ImageButton fish_btn;
@@ -65,7 +63,6 @@ public class InitialSettingActivity extends Activity {
         wheat_btn = findViewById(R.id.allergy7);
         soya_btn =  findViewById(R.id.allergy8);
 
-        allergy_btn = findViewById(R.id.allergySet_btn);
 
 //        Cursor c =LitePal.findBySQL("select * from allergy where isChecked = ?,1");
 //        if(c.moveToFirst()){
