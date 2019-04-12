@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SignInActivity">
-
-    <ScrollView
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".SignInActivity">
 
-        <LinearLayout
+
+    <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,13 +21,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0">
 
-            <LinearLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
                 android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
-                <LinearLayout
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:background="@color/colorPrimary"
@@ -37,24 +35,25 @@
                     android:paddingTop="40dp"
                     android:paddingBottom="40dp">
 
-                    <ImageView
+                <ImageView
                         android:id="@+id/imageView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:contentDescription="@null"
-                        android:src="@drawable/defaultprofile" />
-                </LinearLayout>
+                        android:src="@drawable/logo" />
             </LinearLayout>
+        </LinearLayout>
 
-            <LinearLayout
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/colorPrimary"
                 android:orientation="vertical"
-                android:paddingBottom="100dp">
+                android:paddingBottom="50dp">
 
-                <EditText
+            <EditText
                     android:id="@+id/etLoginUsername"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
@@ -63,9 +62,9 @@
                     android:ems="10"
                     android:hint="@string/usr_text"
                     android:inputType=""
-                    android:textColor="@color/colorWhite" />
+                    android:textColor="@color/colorWhite"/>
 
-                <EditText
+            <EditText
                     android:id="@+id/etLoginPassword"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
@@ -74,25 +73,28 @@
                     android:ems="10"
                     android:hint="@string/pwd_text"
                     android:inputType="textPassword"
-                    android:textColor="@color/colorWhite" />
+                    android:textColor="@color/colorWhite"/>
 
-            </LinearLayout>
+        </LinearLayout>
 
-            <Button
+        <Button
                 android:id="@+id/signIn_btn"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="90dp"
                 android:background="@drawable/button_border"
                 android:text="@string/btn_go"
-                android:textColor="@color/colorWhite" />
-            <Button
-                    android:text="Forgot?"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" tools:layout_editor_absoluteY="309dp"
-                    tools:layout_editor_absoluteX="54dp" android:id="@+id/reset_btn"/>
+                android:textColor="@color/colorWhite"/>
+        <Button
+                android:id="@+id/reset_btn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btn_forget"
+                android:background="@drawable/button_no_border"/>
+    </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

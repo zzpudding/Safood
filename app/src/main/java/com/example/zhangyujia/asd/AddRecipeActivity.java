@@ -64,6 +64,10 @@ public class AddRecipeActivity extends AppCompatActivity {
         } else {
             Toast.makeText(AddRecipeActivity.this, "Please enter the recipe name.", Toast.LENGTH_LONG).show();
         }
+
+        String recipeId = databaseRecipes.push().getKey();
+        Recipe r = new Recipe(recipeId, "junitTestRecipe","testIngredient1","testIngredient2","testIngredient3","android.resource://com.example.zhangyujia.asd/drawable/kungpaochicken_pic" );
+        databaseRecipes.child(recipeId).setValue(r);
     }
 
     public String imageTranslateUri(int resId) {

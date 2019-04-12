@@ -38,6 +38,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:9.2.0'
     implementation 'org.litepal.android:java:3.0.0'
 
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.powermock:powermock:1.6.5'
+    testImplementation 'org.powermock:powermock-module-junit4:1.6.5'
+    testImplementation 'org.powermock:powermock-api-mockito:1.6.5'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:2.2'
+
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'
