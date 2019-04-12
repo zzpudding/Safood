@@ -43,7 +43,10 @@
     </string>
     <string name="text_search_hint_recipe">Type what you want</string>
     <string name="text_hint_add_recipe">Enter new recipe name</string>
-
+    <string name="gps_not_found_title">GPS not found</string>
+    <string name="gps_not_found_message">Want to enable?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 
 
 

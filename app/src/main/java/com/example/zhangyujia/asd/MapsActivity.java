@@ -2,15 +2,19 @@ package com.example.zhangyujia.asd;
 
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -57,9 +61,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
 
         getLocationPermission();
+
+
     }
 
 
@@ -84,6 +91,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     permissions,
                     LOCATION_PERMISSION_REQUEST_CODE);
         }
+
+
     }
 
 
@@ -95,8 +104,36 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
+    /*Check the location settings on device*/
+    public static boolean isLocationServicesAvailable(Context context) {
+        int locationMode = 0;
+        String locationProviders;
+        boolean isAvailable = false;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            try {
+                locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            isAvailable = (locationMode != Settings.Secure.LOCATION_MODE_OFF);
+        } else {
+            locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            isAvailable = !TextUtils.isEmpty(locationProviders);
+        }
+
+        boolean coarsePermissionCheck = (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED);
+        boolean finePermissionCheck = (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED);
+
+        return isAvailable && (coarsePermissionCheck || finePermissionCheck);
+    }
+
     private void getDeviceLocation() {
         Log.d(TAG, "getDeviceLocation: getting the devices current location");
+
+
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -107,7 +144,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful() && task.getResult() != null) {
                             Log.d(TAG, "onComplete: found location!");
                             Location currentLocation = (Location) task.getResult();
 
@@ -168,11 +205,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onMapReady: map is ready");
-        mMap = googleMap;
 
-        if (mLocationPermissionsGranted) {
+
+        if(!isLocationServicesAvailable(this)) {
+            Log.d(TAG, "getDeviceLocation: getting the devices current location failed");
+
+//            new AlertDialog.Builder(this)
+//                    .setTitle(R.string.gps_not_found_title)  // GPS not found
+//                    .setMessage(R.string.gps_not_found_message) // Want to enable?
+//                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+//                        }
+//                    })
+//                    .setNegativeButton(R.string.no, null)
+//                    .show();
+            Toast.makeText(this, "Please turn on Location Service in Settings.", Toast.LENGTH_LONG).show();
+            finish();
+        }else if (mLocationPermissionsGranted) {
+            Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "onMapReady: map is ready");
+            mMap = googleMap;
+
             getDeviceLocation();
 
 
@@ -281,7 +335,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         googlePlaceUrl.append("location="+latitude+","+longitude+"&radius="+PROXIMITY_RADIUS);
         googlePlaceUrl.append("&type=market&keyword="+nearbyPlace);
         googlePlaceUrl.append("&key="+"AIzaSyAVxzNggxN6KWQOiTXUMFJgK-2UZWp7ulQ");
-        https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
+
 
         Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
 
