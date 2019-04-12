@@ -1,7 +1,6 @@
 package com.example.zhangyujia.asd;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button signIn;
+    private Button resetBtn;
     private FirebaseAuth mAuth;
 
 
@@ -31,6 +31,7 @@ public class SignInActivity extends AppCompatActivity {
         username = findViewById(R.id.etLoginUsername);
         password = findViewById(R.id.etLoginPassword);
         signIn = findViewById(R.id.signIn_btn);
+        resetBtn = findViewById(R.id.reset_btn);
 
         mAuth = FirebaseAuth.getInstance();
         getSupportActionBar().setTitle("Sign In");
@@ -57,6 +58,13 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignInActivity.this, ResetPwdActivity.class));
             }
         });
     }
