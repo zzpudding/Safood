@@ -16,14 +16,17 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class resetPasswordActivityTest {
+public class AddRecipeActivityTest {
 
     @Rule
-    public ActivityTestRule<ResetPwdActivity> mActivityTestRule = new ActivityTestRule<>(ResetPwdActivity.class);
+    public ActivityTestRule<AddRecipeActivity> mActivityTestRule = new ActivityTestRule<>(AddRecipeActivity.class);
 
     @Test
-    public void resetPasswordActivityTest() {
-        onView(withId(R.id.resetEmail_eT)).perform(typeText("liu.7707@osu.edu"),closeSoftKeyboard());
-        onView(withId(R.id.resetPwd_btn)).perform(click());
+    public void addRecipeActivityTest() {
+        onView(withId(R.id.etRecipeName)).perform(typeText("Espresso Test Menu"));
+        onView(withId(R.id.etIngredient1)).perform(typeText("Espresso Ingredient1"));
+        onView(withId(R.id.etIngredient2)).perform(typeText("Espresso Ingredient2"));
+        onView(withId(R.id.etIngredient3)).perform(typeText("Espresso Ingredient3"),closeSoftKeyboard());
+        onView(withId(R.id.btnAddRecipe)).perform(click());
     }
 }

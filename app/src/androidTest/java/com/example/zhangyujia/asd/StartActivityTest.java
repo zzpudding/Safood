@@ -23,8 +23,7 @@ public class StartActivityTest {
 
     @Test
     public void startActivityTest() {
-        onView(withId(R.id.signIn_btn)).perform(click());
-
+       onView(withId(R.id.signIn_btn)).perform(click());
     }
 
 }
