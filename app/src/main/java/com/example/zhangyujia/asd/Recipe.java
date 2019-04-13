@@ -17,7 +17,6 @@ public class Recipe {
         this.ingredient2 = ingredient2;
         this.ingredient3 = ingredient3;
         this.imageId = imageId;
-        //this.ingredient4 = ingredient4;
     }
     public Recipe(){}
     public String getRecipeId() {
@@ -44,7 +43,4 @@ public class Recipe {
         return imageId;
     }
 
-//    public String getIngredient4() {
-//        return ingredient4;
-//    }
 }

@@ -1,23 +1,16 @@
 package com.example.zhangyujia.asd;
 
 import android.app.Activity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageButton;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.content.Intent;
-
+import android.widget.ImageButton;
+import android.widget.Toast;
 import org.litepal.LitePal;
 
 import java.util.List;
-
-import static org.litepal.LitePalBase.TAG;
 
 public class InitialSettingActivity extends Activity {
 
@@ -62,16 +55,6 @@ public class InitialSettingActivity extends Activity {
         peanuts_btn =  findViewById(R.id.allergy6);
         wheat_btn = findViewById(R.id.allergy7);
         soya_btn =  findViewById(R.id.allergy8);
-
-
-//        Cursor c =LitePal.findBySQL("select * from allergy where isChecked = ?,1");
-//        if(c.moveToFirst()){
-//            do{
-//                milk_isPressed=c.getInt(c.getColumnIndex("isChecked"));
-//
-//            }while (c.moveToNext());
-//        }
-
 
         List<Allergy> allergies =LitePal.findAll(Allergy.class);
         if( allergies.size()==0){
@@ -135,18 +118,10 @@ public class InitialSettingActivity extends Activity {
             treenuts.setAllergy_2("Brazil Nut");
             treenuts.save();
 
-
-//        egg.save();
-//        peanuts.save();
-//        shellfish.save();
-//        soybean.save();
-//        wheat.save();
-//        fish.save();
-//        treenuts.save();
         }
         else {
             Log.d(TAG,"No Initial");
-//            List<Allergy> check =LitePal.select("isChecked").find(Allergy.class);
+
             Allergy milk = LitePal.find(Allergy.class, 1);
             Allergy eggs = LitePal.find(Allergy.class, 2);
             Allergy peanuts = LitePal.find(Allergy.class, 3);
@@ -178,18 +153,6 @@ public class InitialSettingActivity extends Activity {
             if(soya_isPressed==1)  soya_btn.setBackgroundResource(R.drawable.nosoya);
         }
 
-
-//        else {
-//            milk=new Allergy();
-////            egg=new Allergy("Egg","Egg","Mayonnaise");
-////            peanuts=new Allergy("Peanuts","Peanuts","Chocolate");
-////            shellfish=new Allergy("Shellfish","Shellfish","Lobster");
-////            soybean=new Allergy("Soybean","Soybean","Tofu");
-////            wheat=new Allergy("Wheat","Barley","Rice");
-////            fish=new Allergy("Fish","Cod","Salmon");
-////            treenuts=new Allergy("Treenuts","Almond","Brazil Nut");
-//        }
-//        SQLiteDatabase db = LitePal.getDatabase();
         addListenerOnButton();
     }
 
@@ -216,8 +179,7 @@ public class InitialSettingActivity extends Activity {
                     allergy.setChecked(1); // raise the price
                     allergy.save();
                     milk_isPressed=1;
-//                    milk.setChecked(true);
-//                    milk.updateAll("allergyTypeName=?","Milk");
+
                     Toast.makeText(InitialSettingActivity.this,
                             "Milk is banned!", Toast.LENGTH_SHORT).show();
 
@@ -228,7 +190,6 @@ public class InitialSettingActivity extends Activity {
                     allergy.save();
                     milk_isPressed=0;
                 }
-//                milk_isPressed=!milk_isPressed;
             }
         });
 
@@ -252,7 +213,6 @@ public class InitialSettingActivity extends Activity {
                     allergy.save();
                     eggs_isPressed=0;
                 }
-//                eggs_isPressed=!eggs_isPressed;
             }
         });
 //
@@ -274,12 +234,9 @@ public class InitialSettingActivity extends Activity {
                     allergy.save();
                     peanuts_isPressed=0;
                 }
-//                peanuts_isPressed=!peanuts_isPressed;
             }
         });
 
-//
-//
         shell_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -298,7 +255,6 @@ public class InitialSettingActivity extends Activity {
                     allergy.save();
                     shell_isPressed=0;
                 }
-//                shell_isPressed=!shell_isPressed;
             }
         });
         soya_btn.setOnClickListener(new OnClickListener() {
@@ -319,7 +275,6 @@ public class InitialSettingActivity extends Activity {
                         allergy.save();
                         soya_isPressed=0;
                             }
-//                            soya_isPressed=!soya_isPressed;
                         }
                     });
 
@@ -342,9 +297,9 @@ public class InitialSettingActivity extends Activity {
                     allergy.save();
                     wheat_isPressed=0;
                 }
-//                wheat_isPressed=!wheat_isPressed;
             }
         });
+
         fish_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -363,7 +318,6 @@ public class InitialSettingActivity extends Activity {
                     allergy.save();
                     fish_isPressed=0;
                 }
-//                fish_isPressed=!fish_isPressed;
             }
         });
 
@@ -386,10 +340,8 @@ public class InitialSettingActivity extends Activity {
                     allergy.save();
                     treenuts_isPressed=0;
                 }
-//                treenuts_isPressed=!treenuts_isPressed;
             }
         });
-//
 
     }
 }

@@ -5,13 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -100,16 +98,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                 break;
             }
             case R.id.add_allergens: {
-
                 Intent intent2 = new Intent(getActivity(), InitialSettingActivity.class);
                 startActivity(intent2);
-//                Toast.makeText(getActivity(), "Signed Out", Toast.LENGTH_SHORT).show();
                 break;
             }
         }
     }
-
-
 
 
     // TODO: Rename method, update argument and hook method into UI event

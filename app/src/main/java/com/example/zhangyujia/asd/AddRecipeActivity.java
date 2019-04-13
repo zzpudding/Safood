@@ -18,7 +18,6 @@ public class AddRecipeActivity extends AppCompatActivity {
     private EditText ingredient1;
     private EditText ingredient2;
     private EditText ingredient3;
-    //private EditText ingredient4;
     private Button addRecipe;
     DatabaseReference databaseRecipes;
 
@@ -33,7 +32,6 @@ public class AddRecipeActivity extends AppCompatActivity {
         ingredient1 = findViewById(R.id.etIngredient1);
         ingredient2 = findViewById(R.id.etIngredient2);
         ingredient3 = findViewById(R.id.etIngredient3);
-        //ingredient4 = findViewById(R.id.etIngredient4);
         addRecipe = findViewById(R.id.btnAddRecipe);
 
         addRecipe.setOnClickListener(new View.OnClickListener() {
@@ -49,8 +47,6 @@ public class AddRecipeActivity extends AppCompatActivity {
         String ingre1 = ingredient1.getText().toString();
         String ingre2 = ingredient2.getText().toString();
         String ingre3 = ingredient3.getText().toString();
-
-        //String ingre4 = ingredient4.getText().toString();
 
         if (!TextUtils.isEmpty(name)) {
             String recipeId = databaseRecipes.push().getKey();

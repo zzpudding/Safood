@@ -26,9 +26,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
             FragmentTransaction transaction= fm.beginTransaction();
             transaction.add(R.id.fragment_container,fragment);
             transaction.commit();
-//            fm.beginTransaction()
-//                    .add(R.id.fragment_container,fragment)
-//                    .commit();
         }
     }
 }

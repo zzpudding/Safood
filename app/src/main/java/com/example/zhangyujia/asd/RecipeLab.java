@@ -24,9 +24,6 @@ public class RecipeLab {
         if (sRecipeLab == null) {
             sRecipeLab = new RecipeLab(context);
         }
-//        while(sRecipeLab.mRecipes.isEmpty()){
-//
-//        }
         Log.d(TAG,"get the recipelab");
         return sRecipeLab;
     }
@@ -35,16 +32,6 @@ public class RecipeLab {
         mRecipes = new ArrayList<>();
 
         databaseRecipes = FirebaseDatabase.getInstance().getReference("recipes");
-//        for (int i = 0; i < 2; i++) {
-//            Recipe MapoTofu = new Recipe("1","Mapo Tofu","Tofu","Pork","",R.drawable.mapotofu_pic);
-//            mRecipes.add(MapoTofu);
-//            Recipe BroccoliShrimp = new Recipe("2","Broccoli Shrimp","Broccoli","Shrimp","",R.drawable.broccolishrimp_pic);
-//            mRecipes.add(BroccoliShrimp);
-//            Recipe KungpaoChicken = new Recipe("3","Kung Pao Chicken","Cucumber","Carrot","",R.drawable.kungpaochicken_pic);
-//            mRecipes.add(KungpaoChicken);
-//            Recipe CurryRice = new Recipe("4","Curry Rice","Chicken","Curry","Potato",R.drawable.curryrice_pic);
-//            mRecipes.add(CurryRice);
-//        }
         databaseRecipes.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -74,7 +61,6 @@ public class RecipeLab {
                 return recipe;
             }
         }
-//        Log.d(TAG,"getRecipes");
         return null;
     }
 }

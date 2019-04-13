@@ -35,8 +35,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
     private Button searchButton;
 
     private OnFragmentInteractionListener mListener;
-//    private OnButtonClickListener1 onButtonClickListener1 ;
-//    private OnButtonClickListener2 onButtonClickListener2 ;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -84,37 +83,9 @@ public class HomeFragment extends Fragment implements OnClickListener {
         Log.d(TAG,"Button wired");
         addButton.setOnClickListener(this);
         searchButton.setOnClickListener(this);
-
-
         cbButton.setOnClickListener(this);
-
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(TAG,"clicked add");
-//                FragmentManager fm = getActivity().getSupportFragmentManager();
-//
-//                fm.beginTransaction().replace(R.id.fragment_container,new CookbookFragment())
-//                        .commit();
-//
-////                    Intent intent= new Intent(TagActivity.this, CookbookActivity.class);
-////                startActivity(intent);
-//                }
-////                Intent intent=new Intent(TagActivity.this, AddRecipeActivity.class);
-////                startActivity(intent);
-//
-//        });
         return view;
     }
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        //getActivity() is fully created in onActivityCreated and instanceOf differentiate it between different Activities
-//        if (getActivity() instanceof OnButtonClickListener1)
-//            onButtonClickListener1 = (OnButtonClickListener1) getActivity();
-//        if (getActivity() instanceof OnButtonClickListener1)
-//            onButtonClickListener2 = (OnButtonClickListener2) getActivity();
-//    }
 
     @Override
     public void onClick(View v) {
@@ -123,35 +94,20 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 Log.d(TAG,"clicked add");
                 Intent intent1=new Intent(getActivity(), AddRecipeActivity.class);
                 startActivity(intent1);
-//                if(onButtonClickListener1 != null)
-//                {
-//                    onButtonClickListener1.onButtonClick1();
-//                }
                 break;
             case R.id.cookbook_btn:
                 Log.d(TAG,"clicked cookbook");
                 Intent intent2=new Intent(getActivity(), CookbookActivity.class);
                 startActivity(intent2);
-//                if(onButtonClickListener2 != null)
-//                {
-//                    onButtonClickListener2.onButtonClick2();
-//                }
                 break;
             case R.id.search_btn:
                 Log.d(TAG,"clicked search");
                 Intent intent3=new Intent(getActivity(), SearchRecipeActivity.class);
                 startActivity(intent3);
-//                if(onButtonClickListener1 != null)
-//                {
-//                    onButtonClickListener1.onButtonClick1();
-//                }
                 break;
                 default:break;
         }
     }
-//
-
-
 
         // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -177,59 +133,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
         mListener = null;
     }
 
-        /**
-         * This interface must be implemented by activities that contain this
-         * fragment to allow an interaction in this fragment to be communicated
-         * to the activity and potentially other fragments contained in that
-         * activity.
-         * <p>
-         * See the Android Training lesson <a href=
-         * "http://developer.android.com/training/basics/fragments/communicating.html"
-         * >Communicating with Other Fragments</a> for more information.
-         */
-//    public interface OnButtonClickListener1
-//        {
-//            void onButtonClick1();
-//        }
-//    public void setOnButtonClickListener1(OnButtonClickListener1 onButtonClickListener1)
-//    {
-//        this.onButtonClickListener1 = onButtonClickListener1;
-//    }
-//
-//    public interface OnButtonClickListener2
-//    {
-//        void onButtonClick2();
-//    }
-//    public void setOnButtonClickListener2(OnButtonClickListener2 onButtonClickListener2)
-//    {
-//        this.onButtonClickListener2 = onButtonClickListener2;
-//    }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }
-//    private Button addButton;
-//    private Button cbButton;
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_home);
-//
-//        addButton = findViewById(R.id.add_recipe_button);
-//        cbButton  = findViewById(R.id.cookbook_button);
-//        cbButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent= new Intent(TagActivity.this, CookbookActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(TagActivity.this, AddRecipeActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }

@@ -1,22 +1,15 @@
 package com.example.zhangyujia.asd;
 
-import android.app.AlertDialog;
-import android.content.ContentResolver;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.net.Uri;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -74,10 +67,6 @@ public class ViewShopListActivity extends AppCompatActivity {
         private TextView mNameTextView;
         private ImageView mImageView;
         private Recipe mRecipe;
-//        final String recipeId=mRecipe.getRecipeId();
-//        final String recipeName=mRecipe.getRecipeName();
-//        final String ingredient1=mRecipe.getIngredient1();
-
 
         public RecipeHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_recipe, parent, false));
@@ -90,7 +79,6 @@ public class ViewShopListActivity extends AppCompatActivity {
             mRecipe = recipe;
             mNameTextView.setText(mRecipe.getRecipeName());
             Picasso.with(getContext()).load(recipe.getImageId()).placeholder(R.drawable.default_recipe_pic).fit().into(mImageView);
-//            mImageView.setImageResource(recipe.getImageId());
 
         }
     }

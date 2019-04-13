@@ -22,12 +22,8 @@ public class ResetPwdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_pwd);
 
-//        toolbar = findViewById(R.id.toolbar);
-//        progressBar = findViewById(R.id.progressBar);
         emailEditText = findViewById(R.id.resetEmail_eT);
         resetPwdBtn = findViewById(R.id.resetPwd_btn);
-
-//        toolbar.setTitle("Reset Password");
 
         mAuth = FirebaseAuth.getInstance();
 

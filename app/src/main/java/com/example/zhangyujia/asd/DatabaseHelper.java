@@ -13,8 +13,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "shopping_list";
     private static final String list_number = "list_number";
-//    private static final String recipe_name = "list_content";
-
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);

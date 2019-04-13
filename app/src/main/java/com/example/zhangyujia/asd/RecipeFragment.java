@@ -1,6 +1,5 @@
 package com.example.zhangyujia.asd;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,15 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.String;
 
 
 /**
@@ -64,15 +58,8 @@ public class RecipeFragment extends Fragment implements View.OnClickListener {
     private DatabaseHelper mDatabaseHelper;
     private OnFragmentInteractionListener mListener;
 
-//    Bundle args= new Bundle();
-//    args.putChar(ARG_MY_OBJECT,myObject);
-//    args.putInt(ARG_MY_INT,myInt);
-//    args.putCharSequence(ARG_MY_STRING,myString);
-
-
     public RecipeFragment() {
         // Required empty public constructor
-
     }
 
     /**
@@ -121,7 +108,6 @@ public class RecipeFragment extends Fragment implements View.OnClickListener {
         mRecipeImage = (ImageView) view.findViewById(R.id.recipe_image);
         Picasso.with(getContext()).load(mRecipeImageId).placeholder(R.drawable.default_recipe_pic).fit().into(mRecipeImage);
 
-//      mRecipeImage.setImageResource(getArguments().getInt(ARG_RECIPE_IMAGE));
         mRecipeDetailName = (TextView) view.findViewById(R.id.recipe_name);
         mRecipeDetailNameInput = (TextView) view.findViewById(R.id.recipe_detail_name);
         mRecipeDetailIngre = (TextView) view.findViewById(R.id.recipe_ingre);
@@ -183,18 +169,11 @@ public class RecipeFragment extends Fragment implements View.OnClickListener {
     public void addToCart(String mRecipeName, String mRecipeIngredient1, String mRecipeIngredient2, String mRecipeIngredient3, String mRecipeImageId) {
         mDatabaseHelper = new DatabaseHelper(getContext());
         mDatabaseHelper.addData(mRecipeName, mRecipeIngredient1, mRecipeIngredient2, mRecipeIngredient3, mRecipeImageId);
-//        ContentValues contentValues=new ContentValues();
-//        contentValues.put("", );
-
 
         List<String> mlist = new ArrayList<String>();
         mlist.add(mRecipeId);
-//        String s = mlist.get(0);
         Toast.makeText(getActivity(), "Added to cart!", Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
-
     }
-
 
     /**
      * This interface must be implemented by activities that contain this
@@ -210,14 +189,4 @@ public class RecipeFragment extends Fragment implements View.OnClickListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-
-//    public static RecipeFragment newInstance(String recipeId){
-//        Bundle args=new Bundle();
-//        args.putCharSequence(ARG_RECIPE_ID,recipeId);
-//        RecipeFragment fragment = new RecipeFragment();
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-
 }

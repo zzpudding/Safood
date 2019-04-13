@@ -26,14 +26,9 @@ public class StartActivity extends AppCompatActivity {
             startActivity(homeIntent);
             finish();
         }
-
-
         setContentView(R.layout.activity_start);
         Button signin = (Button) findViewById(R.id.signIn_btn);
         Button signup = (Button) findViewById(R.id.signUp_btn);
-
-
-
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +37,6 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

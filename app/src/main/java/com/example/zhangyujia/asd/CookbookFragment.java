@@ -77,16 +77,13 @@ public class CookbookFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-//        RecipeLab recipeLab = RecipeLab.get(getActivity());
-
     }
+
     @Override
     public void onStart(){
         super.onStart();
-//
-//        RecipeLab recipeLab = RecipeLab.get(getActivity());
-//        List<Recipe> recipes=recipeLab.getRecipes();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,19 +93,9 @@ public class CookbookFragment extends Fragment {
 
         mCookbookRecyclerView = (RecyclerView) view.findViewById(R.id.cookbook_recycler_view);
         mCookbookRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        updateUI();
 
         list=new ArrayList<Recipe>();
-//        for (int i = 0; i < 2; i++) {
-//            Recipe MapoTofu = new Recipe("1","Mapo Tofu","Tofu","Pork","",R.drawable.mapotofu_pic);
-//            list.add(MapoTofu);
-//            Recipe BroccoliShrimp = new Recipe("2","Broccoli Shrimp","Broccoli","Shrimp","",R.drawable.broccolishrimp_pic);
-//            list.add(BroccoliShrimp);
-//            Recipe KungpaoChicken = new Recipe("3","Kung Pao Chicken","Cucumber","Carrot","",R.drawable.kungpaochicken_pic);
-//            list.add(KungpaoChicken);
-//            Recipe CurryRice = new Recipe("4","Curry Rice","Chicken","Curry","Potato",R.drawable.curryrice_pic);
-//            list.add(CurryRice);
-//        }
+
         reference= FirebaseDatabase.getInstance().getReference().child("recipes");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,67 +117,16 @@ public class CookbookFragment extends Fragment {
             }
         });
 
-
-//        Log.d(TAG,"updateUI");
-//        RecipeLab recipeLab = RecipeLab.get(getActivity());
-//        List<Recipe> recipes=recipeLab.getRecipes();
-//
-//        while(recipes.isEmpty()){
-//            recipes=recipeLab.getRecipes();
-//        }
-//        mAdapter = new RecipeAdapter(recipes);
-//        mCookbookRecyclerView.setAdapter(mAdapter);
         mAdapter = new RecipeAdapter(list);
         mCookbookRecyclerView.setAdapter(mAdapter);
         return view;
     }
-
-//    public Recipe getRecipe(String id){
-//        for (Recipe recipe : list){
-//            if(recipe.getRecipeId ().equals(id)){
-//                return recipe;
-//            }
-//        }
-////        return null;
-//    }
-//    private void updateUI(){
-//        Log.d(TAG,"updateUI");
-//        list=new ArrayList<Recipe>();
-//        reference= FirebaseDatabase.getInstance().getReference().child("recipes");
-//        reference.addValueEventListener(new ValueEventListener() {
-//             @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    list.clear();
-//                    for(DataSnapshot recipeSnapshot : dataSnapshot.getChildren()){
-//                        Recipe recipe=recipeSnapshot.getValue(Recipe.class);
-//
-//                        list.add(recipe);
-//
-//                    }
-//                    mAdapter = new RecipeAdapter(list);
-//                    mCookbookRecyclerView.setAdapter(mAdapter);
-//                    Log.d(TAG,"dataRetrieved");
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
-//        RecipeLab recipeLab = RecipeLab.get(getActivity());
-//        List<Recipe> recipes=recipeLab.getRecipes();
-//        Log.d(TAG,"recipe"+ recipes.isEmpty());
-////        mAdapter = new RecipeAdapter(recipes);
-//        mCookbookRecyclerView.setAdapter(mAdapter);
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-
-
     }
 
     @Override
@@ -230,9 +166,6 @@ public class CookbookFragment extends Fragment {
         private TextView mNameTextView;
         private ImageView mImageView;
         private Recipe mRecipe;
-//        final String recipeId=mRecipe.getRecipeId();
-//        final String recipeName=mRecipe.getRecipeName();
-//        final String ingredient1=mRecipe.getIngredient1();
 
         private void showDialog(final Recipe mRecipe) {
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());

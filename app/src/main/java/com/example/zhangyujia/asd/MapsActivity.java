@@ -47,7 +47,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LocationCallback locationCallback;
     private Location lastlocation;
     private Marker currentLocationMarker;
-    //    public static final int REQUEST_LOCATION_CODE = 99;
     int PROXIMITY_RADIUS = 10000;
     double latitude, longitude;
 
@@ -61,14 +60,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_maps);
-
         getLocationPermission();
-
-
     }
-
 
     private void getLocationPermission() {
         Log.d(TAG, "getLocationPermission: getting location permissions");
@@ -99,7 +93,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void initMap() {
         Log.d(TAG, "initMap: initializing map");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-
         mapFragment.getMapAsync(MapsActivity.this);
     }
 
@@ -110,7 +103,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         String locationProviders;
         boolean isAvailable = false;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             try {
                 locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
             } catch (Settings.SettingNotFoundException e) {
@@ -131,9 +124,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void getDeviceLocation() {
         Log.d(TAG, "getDeviceLocation: getting the devices current location");
-
-
-
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -171,29 +161,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        switch(requestCode)
-//        {
-//            case REQUEST_LOCATION_CODE:
-//                if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-//                {
-//                    if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) !=  PackageManager.PERMISSION_GRANTED)
-//                    {
-//                        if(client == null)
-//                        {
-//                            bulidGoogleApiClient();
-//                        }
-//                        mMap.setMyLocationEnabled(true);
-//                    }
-//                }
-//                else
-//                {
-//                    Toast.makeText(this,"Permission Denied" , Toast.LENGTH_LONG).show();
-//                }
-//        }
-//    }
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -207,22 +174,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
 
 
-        if(!isLocationServicesAvailable(this)) {
+        if (!isLocationServicesAvailable(this)) {
             Log.d(TAG, "getDeviceLocation: getting the devices current location failed");
-
-//            new AlertDialog.Builder(this)
-//                    .setTitle(R.string.gps_not_found_title)  // GPS not found
-//                    .setMessage(R.string.gps_not_found_message) // Want to enable?
-//                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-//                        }
-//                    })
-//                    .setNegativeButton(R.string.no, null)
-//                    .show();
             Toast.makeText(this, "Please turn on Location Service in Settings.", Toast.LENGTH_LONG).show();
             finish();
-        }else if (mLocationPermissionsGranted) {
+        } else if (mLocationPermissionsGranted) {
             Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "onMapReady: map is ready");
             mMap = googleMap;
@@ -235,40 +191,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return;
             }
             mMap.setMyLocationEnabled(true);
-//            mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
         }
     }
 
-
-
-
-
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
         Object dataTransfer[] = new Object[2];
         GetNearbyPlaceData getNearbyPlacesData = new GetNearbyPlaceData();
 
-        switch(v.getId())
-        {
+        switch (v.getId()) {
             case R.id.btn_search_map:
-                EditText tf_location =  findViewById(R.id.TF_location);
+                EditText tf_location = findViewById(R.id.TF_location);
                 String location = tf_location.getText().toString();
                 List<Address> addressList;
 
-
-                if(!location.equals(""))
-                {
+                if (!location.equals("")) {
                     Geocoder geocoder = new Geocoder(this);
 
                     try {
                         addressList = geocoder.getFromLocationName(location, 5);
 
-                        if(addressList != null)
-                        {
-                            for(int i = 0;i<addressList.size();i++)
-                            {
-                                LatLng latLng = new LatLng(addressList.get(i).getLatitude() , addressList.get(i).getLongitude());
+                        if (addressList != null) {
+                            for (int i = 0; i < addressList.size(); i++) {
+                                LatLng latLng = new LatLng(addressList.get(i).getLatitude(), addressList.get(i).getLongitude());
                                 MarkerOptions markerOptions = new MarkerOptions();
                                 markerOptions.position(latLng);
                                 markerOptions.title(location);
@@ -282,15 +226,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }
                 }
                 break;
-
-
             case R.id.btn_walmart:
                 mMap.clear();
                 String walMart = "walmart";
                 String url = getUrl(latitude, longitude, walMart);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
-
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Walmart", Toast.LENGTH_SHORT).show();
                 break;
@@ -300,7 +241,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 url = getUrl(latitude, longitude, target);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
-
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Target", Toast.LENGTH_SHORT).show();
                 break;
@@ -310,7 +250,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 url = getUrl(latitude, longitude, kroger);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
-
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Kroger", Toast.LENGTH_SHORT).show();
                 break;
@@ -320,7 +259,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 url = getUrl(latitude, longitude, costco);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
-
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Costco", Toast.LENGTH_SHORT).show();
                 break;
@@ -328,31 +266,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    private String getUrl(double latitude , double longitude , String nearbyPlace)
-    {
+    private String getUrl(double latitude, double longitude, String nearbyPlace) {
 
         StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googlePlaceUrl.append("location="+latitude+","+longitude+"&radius="+PROXIMITY_RADIUS);
-        googlePlaceUrl.append("&type=market&keyword="+nearbyPlace);
-        googlePlaceUrl.append("&key="+"AIzaSyAVxzNggxN6KWQOiTXUMFJgK-2UZWp7ulQ");
+        googlePlaceUrl.append("location=" + latitude + "," + longitude + "&radius=" + PROXIMITY_RADIUS);
+        googlePlaceUrl.append("&type=market&keyword=" + nearbyPlace);
+        googlePlaceUrl.append("&key=" + "AIzaSyAVxzNggxN6KWQOiTXUMFJgK-2UZWp7ulQ");
 
-
-        Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
+        Log.d("MapsActivity", "url = " + googlePlaceUrl.toString());
 
         return googlePlaceUrl.toString();
     }
-
-//    @Override
-//    public void onConnected(@Nullable Bundle bundle) {
-//
-//        locationRequest = new LocationRequest();
-//        locationRequest.setInterval(100);
-//        locationRequest.setFastestInterval(1000);
-//        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-//
-//
-//
-//    }
-
 
 }
