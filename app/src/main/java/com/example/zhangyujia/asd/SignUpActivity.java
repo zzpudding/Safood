@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity{
                                         username.setText("");
                                         password1.setText("");
                                         password2.setText("");
-                                        Intent intent=new Intent(SignUpActivity.this, InitialSettingActivity.class);
+                                        Intent intent=new Intent(SignUpActivity.this, TagActivity.class);
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
