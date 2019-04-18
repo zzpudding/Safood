@@ -17,7 +17,6 @@ import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.String;
 
 public class SearchRecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +27,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
     private SearchRecipeActivity.RecipeAdapter mAdapter;
     DatabaseReference mReference;
     public ArrayList<Recipe> list;
+    public ArrayList<Recipe> temp_list;
 
     private List<Allergy> mAllergens;
 
@@ -81,33 +81,33 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
 
                 for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
                     Recipe recipe = recipeSnapshot.getValue(Recipe.class);
-
                     int toAdd = 1;
+
                     for (int i = 0; i < mAllergens.size(); i++) {
-                        Log.d(TAG, "Search Recipe");
+                        Log.d(TAG, "sd");
                         String mKey = mAllergens.get(i).getAllergyTypeName().toLowerCase() + mAllergens.get(i).getAllergy_1().toLowerCase() + mAllergens.get(i).getAllergy_2().toLowerCase();
-                        if (mKey.contains(recipe.getIngredient1()) || mKey.contains(recipe.getIngredient2()) || mKey.contains(recipe.getIngredient3()) || mKey.contains(recipe.getRecipeName())) {
+                        if (mKey.contains(recipe.getIngredient1()) || mKey.contains(recipe.getIngredient2()) || mKey.contains(recipe.getIngredient3())) {
                             toAdd = 0;
                             break;
                         }
                     }
 
-                    if (toAdd == 1) {
-                        for (String subKeyword : subKeywords) {
-                            if ((recipe.getRecipeName().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (recipe.getIngredient1().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*"))|| (recipe.getIngredient2().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*"))|| (recipe.getIngredient3().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")))
-                            {
-                                list.add(recipe);
-                            }
+
+                    for (String subKeyword : subKeywords) {
+                        if (toAdd == 1 && (recipe.getRecipeName().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (recipe.getIngredient1().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (recipe.getIngredient2().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (recipe.getIngredient3().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*"))) {
+                            list.add(recipe);
                         }
                     }
+
                 }
 
                 if (list.size() == 0) {
                     Toast.makeText(SearchRecipeActivity.this,
-                            "No recipes found :(", Toast.LENGTH_SHORT).show();
+                            "No recipes found", Toast.LENGTH_SHORT).show();
                 }
                 mAdapter.notifyDataSetChanged();
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -147,8 +147,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
     private class RecipeAdapter extends RecyclerView.Adapter<SearchRecipeActivity.RecipeHolder> {
         private List<Recipe> mRecipes;
 
-        public RecipeAdapter(List<Recipe
-                > recipes) {
+        public RecipeAdapter(List<Recipe> recipes) {
             mRecipes = recipes;
 
         }
