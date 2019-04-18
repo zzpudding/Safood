@@ -46,6 +46,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
         mAllergens = LitePal.select("allergyTypeName", "allergy_1", "allergy_2").where("isChecked = ?", "1").find(Allergy.class);
 
         list = new ArrayList<Recipe>();
+        temp_list = new ArrayList<Recipe>();
 
         mAdapter = new SearchRecipeActivity.RecipeAdapter(list);
         mSearchResults.setAdapter(mAdapter);
@@ -67,6 +68,8 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
 
     protected void RecipeSearch(final String searchText) {
         list.clear();
+        temp_list.clear();
+
         final String[] subKeywords = searchText.split("\\p{Blank}|-|,|;");
 
         mReference = FirebaseDatabase.getInstance().getReference().child("recipes");
@@ -86,20 +89,24 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
                     for (int i = 0; i < mAllergens.size(); i++) {
                         Log.d(TAG, "sd");
                         String mKey = mAllergens.get(i).getAllergyTypeName().toLowerCase() + mAllergens.get(i).getAllergy_1().toLowerCase() + mAllergens.get(i).getAllergy_2().toLowerCase();
-                        if (mKey.contains(recipe.getIngredient1()) || mKey.contains(recipe.getIngredient2()) || mKey.contains(recipe.getIngredient3())) {
+                        if (mAllergens.get(i).isChecked()==1 && mKey.contains(recipe.getIngredient1()) || mKey.contains(recipe.getIngredient2()) || mKey.contains(recipe.getIngredient3())) {
                             toAdd = 0;
                             break;
                         }
                     }
+                    if(toAdd == 1){
+                        temp_list.add(recipe);
+                    }
+                }
 
-
+                for(int j=0; j<temp_list.size();j++){
                     for (String subKeyword : subKeywords) {
-                        if (toAdd == 1 && (recipe.getRecipeName().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (recipe.getIngredient1().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (recipe.getIngredient2().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (recipe.getIngredient3().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*"))) {
-                            list.add(recipe);
+                        if ((temp_list.get(j).getRecipeName().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (temp_list.get(j).getIngredient1().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (temp_list.get(j).getIngredient2().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*")) || (temp_list.get(j).getIngredient3().toLowerCase().matches(".*" + subKeyword.toLowerCase() + ".*"))) {
+                            list.add(temp_list.get(j));
                         }
                     }
-
                 }
+
 
                 if (list.size() == 0) {
                     Toast.makeText(SearchRecipeActivity.this,
