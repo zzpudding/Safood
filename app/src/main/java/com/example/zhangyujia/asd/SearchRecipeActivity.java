@@ -134,7 +134,7 @@ public class SearchRecipeActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
-
+    }
 
 
     private class RecipeHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
