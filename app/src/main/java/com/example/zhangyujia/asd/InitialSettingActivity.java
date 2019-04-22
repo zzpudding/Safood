@@ -71,7 +71,7 @@ public class InitialSettingActivity extends Activity {
             egg=new Allergy();
             egg.setChecked(0);
             egg.setAllergyTypeName("Egg");
-            egg.setAllergy_1("Egg");
+            egg.setAllergy_1("Eggs");
             egg.setAllergy_2("Mayonnaise");
             egg.save();
 
